@@ -1,0 +1,190 @@
+This document describes overlays provided in the kernel packages
+For generic Armbian overlays documentation please see
+https://docs.armbian.com/Hardware_Allwinner_overlays/
+
+### Platform:
+
+sun8i-h3 (Allwinner H3)
+
+### Platform details:
+
+Supported pin banks: PA, PC, PD, PG
+
+Both SPI controllers have only one hardware CS,
+so SPI chip select is always set to 0
+
+### Provided overlays:
+
+- analog-codec
+- i2c0
+- i2c1
+- i2c2
+- spi0-jedec-nor
+- spi0-mcp2515
+- spi0-spidev
+- spi1-jedec-nor
+- spi1-mcp2515
+- spi1-spidev
+- uart1
+- uart2
+- uart3
+- usbhost0
+- usbhost2
+- usbhost3
+- w1-gpio
+
+### Overlay details:
+
+### analog-codec
+
+Activates SoC analog codec driver that provides Line Out and Mic In
+functionality
+
+### i2c0
+
+Activates TWI/I2C bus 0, exposed on pins PA11 and PA12
+
+### i2c1
+
+Activates TWI/I2C bus 1, exposed on pins PA18 and PA19
+
+### i2c2
+
+Activates TWI/I2C bus 2, exposed on pins PE12 and PE13
+On most board this but is wired to Camera (CSI) socket
+
+### spi0-jedec-nor
+
+Activates MTD support for JEDEC compatible SPI NOR flash chips on SPI bus 0
+supported by the kernel SPI NOR driver
+SPI 0 pins (MOSI, MISO, SCK, CS): PC0, PC1, PC2, PC3
+
+Parameters:
+
+param_spinor_max_freq (int)
+	Maximum SPI frequency
+	Default: 1000000
+	Range: 3000 - 100000000
+
+### spi0-mcp2515
+
+Activates mcp2515 SPI CAN controller connected to SPI bus 0
+SPI 0 pins (MOSI, MISO, SCK, CS): PC0, PC1, PC2, PC3
+
+Parameters:
+
+param_mcp2515_clk_freq (int)
+	Onboard oscillator clock frequency
+	Default: 8000000
+	Typical values: 8000000, 16000000
+
+param_mcp2515_int_pin (pin)
+	Interrupt pin
+	Default: PA7
+	Selected pin should support interrupts (EINT)
+
+### spi0-spidev
+
+Activates SPIdev device node (/dev/spidev0.0) for userspace SPI access
+SPI 0 pins (MOSI, MISO, SCK, CS): PC0, PC1, PC2, PC3
+
+Parameters:
+
+param_spidev_max_freq (int)
+	Maximum SPIdev frequency
+	Default: 1000000
+	Range: 3000 - 100000000
+
+### spi1-jedec-nor
+
+Activates MTD support for JEDEC compatible SPI NOR flash chips on SPI bus 1
+supported by the kernel SPI NOR driver
+SPI 1 pins (MOSI, MISO, SCK, CS): PA15, PA16, PA14, PA13
+
+Parameters:
+
+param_spinor_max_freq (int)
+	Maximum SPI frequency
+	Default: 1000000
+	Range: 3000 - 100000000
+
+### spi1-mcp2515
+
+Activates mcp2515 SPI CAN controller connected to SPI bus 1
+SPI 1 pins (MOSI, MISO, SCK, CS): PA15, PA16, PA14, PA13
+
+See spi0-mcp2515 description for supported parameters
+
+### spi1-spidev
+
+Activates SPIdev device node (/dev/spidev1.0) for userspace SPI access
+SPI 1 pins (MOSI, MISO, SCK, CS): PA15, PA16, PA14, PA13
+Chip select is hardcoded to 0 (Pin PA13)
+
+See spi0-spidev description for supported parameters
+
+### uart1
+
+Activates serial port 1 (/dev/ttyS1)
+UART 1 pins (TX, RX, RTS, CTS): PG6, PG7, PG8, PG9
+
+Parameters:
+
+param_uart1_rtscts (bool)
+	Enable RTS and CTS pins
+	Default: 0
+	Set to 1 to enable
+
+### uart2
+
+Activates serial port 2 (/dev/ttyS2)
+UART 2 pins (TX, RX, RTS, CTS): PA0, PA1, PA2, PA3
+
+Parameters:
+
+param_uart2_rtscts (bool)
+	Enable RTS and CTS pins
+	Default: 0
+	Set to 1 to enable CTS and RTS pins
+
+### uart3
+
+Activates serial port 3 (/dev/ttyS3)
+UART 3 pins (TX, RX, RTS, CTS): PA13, PA14, PA15, PA16
+
+Parameters:
+
+param_uart3_rtscts (bool)
+	Enable RTS and CTS pins
+	Default: 0
+	Set to 1 to enable CTS and RTS pins
+
+### usbhost0
+
+Activates USB host controller 0
+
+### usbhost2
+
+Activates USB host controller 2
+
+### usbhost3
+
+Activates USB host controller 3
+
+### w1-gpio
+
+Activates 1-Wire GPIO master
+Requires external pull-up resistor on data pin
+
+Parameters:
+
+param_w1_pin (pin)
+	Data pin for 1-Wire master
+	Default: PD14
+
+param_w1_pin_int_pullup (bool)
+	Enable internal pull-up for the data pin
+	This option should not be used with multiple sensors or long wires -
+		please use external pull-up resistor instead
+	Default: 0
+	Set to 1 to enable the pull-up

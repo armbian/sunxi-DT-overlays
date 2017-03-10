@@ -1,0 +1,58 @@
+/dts-v1/ /plugin/;
+
+#include <dt-bindings/interrupt-controller/irq.h>
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			spi0 = "/soc/spi@01c68000";
+		};
+	};
+
+	fragment@1 {
+		target-path = "/clocks";
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <1>;
+            		can0_osc_fixed: can0_osc_fixed {
+                		compatible = "fixed-clock";
+                		#clock-cells = <0>;
+                		clock-frequency  = <8000000>;
+            		};
+		};
+	};
+
+	fragment@2 {
+		target = <&pio>;
+		__overlay__ {
+			can0_pin_irq: can0_pin_irq {
+				pins = "PA7";
+				function = "irq";
+				bias-pull-up;
+			};
+		};
+	};
+
+	fragment@3 {
+		target = <&spi0>;
+		__overlay__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+            		can0: mcp2515@0 {
+                		reg = <0>; /* Chip Select 0 */
+                		compatible = "microchip,mcp2515";
+                		pinctrl-names = "default";
+                		pinctrl-0 = <&can0_pin_irq>;
+                		spi-max-frequency = <10000000>;
+				interrupt-parent = <&pio>;
+				interrupts = <0 7 IRQ_TYPE_EDGE_FALLING>; /* PA7 */
+				clocks = <&can0_osc_fixed>;
+				status = "okay";
+			};
+		};
+	};
+};

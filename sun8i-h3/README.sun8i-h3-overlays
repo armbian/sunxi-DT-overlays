@@ -16,6 +16,7 @@ so SPI chip select is always set to 0
 ### Provided overlays:
 
 - analog-codec
+- cir
 - i2c0
 - i2c1
 - i2c2
@@ -39,6 +40,10 @@ so SPI chip select is always set to 0
 
 Activates SoC analog codec driver that provides Line Out and Mic In
 functionality
+
+### cir
+
+Activates CIR (Infrared remote) receiver, connected to standard pin PL11
 
 ### i2c0
 

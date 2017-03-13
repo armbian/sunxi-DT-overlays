@@ -1,0 +1,41 @@
+/dts-v1/ /plugin/;
+
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+	compatible = "allwinner,sun7i-a20";
+
+	fragment@0 {
+		target = <&pio>;
+		__overlay__ {
+			edt_ft5x06_pins: edt_ft5x06_pins {
+				pins = "PH7", "PH9";
+				function = "gpio_out";
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&i2c3>;
+		__overlay__ {
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&i2c3_pins_a>;
+			edt: edt-ft5x06@38 {
+				compatible = "edt,edt-ft5x06";
+				reg = <0x38>;
+				interrupt-parent = <&pio>;
+				interrupts = <7 9 IRQ_TYPE_EDGE_FALLING>;
+				wake-gpios = <7 7 GPIO_ACTIVE_LOW>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&edt_ft5x06_pins>;
+				touchscreen-size-x = <1024>;
+				touchscreen-size-y = <600>;
+				touchscreen-inverted-x;
+				touchscreen-swapped-x-y;
+			};
+		};
+
+	};
+};

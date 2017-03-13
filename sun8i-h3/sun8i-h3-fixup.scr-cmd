@@ -12,24 +12,33 @@ test "${tmp_bank}" = "C" && setenv tmp_bank 2;
 test "${tmp_bank}" = "D" && setenv tmp_bank 3;
 test "${tmp_bank}" = "G" && setenv tmp_bank 6'
 
+if test "${param_spinor_spi_bus}" = "0"; then
+	fdt set /soc/spi@01c68000 status "okay"
+	fdt set /soc/spi@01c68000/spiflash@0 status "okay"
+fi
+
 if test "${param_spinor_spi_bus}" = "1"; then
-	fdt set /soc/spi@01c68000 status "disabled"
 	fdt set /soc/spi@01c69000 status "okay"
-	fdt set /soc/spi@01c68000/spiflash@0 status "disabled"
 	fdt set /soc/spi@01c69000/spiflash@0 status "okay"
 fi
 
+if test "${param_mcp2515_spi_bus}" = "0"; then
+	fdt set /soc/spi@01c68000 status "okay"
+	fdt set /soc/spi@01c68000/mcp2515@0 status "okay"
+fi
+
 if test "${param_mcp2515_spi_bus}" = "1"; then
-	fdt set /soc/spi@01c68000 status "disabled"
 	fdt set /soc/spi@01c69000 status "okay"
-	fdt set /soc/spi@01c68000/mcp2515@0 status "disabled"
 	fdt set /soc/spi@01c69000/mcp2515@0 status "okay"
 fi
 
+if test "${param_spidev_spi_bus}" = "0"; then
+	fdt set /soc/spi@01c68000 status "okay"
+	fdt set /soc/spi@01c68000/spidev@0 status "okay"
+fi
+
 if test "${param_spidev_spi_bus}" = "1"; then
-	fdt set /soc/spi@01c68000 status "disabled"
 	fdt set /soc/spi@01c69000 status "okay"
-	fdt set /soc/spi@01c68000/spidev@0 status "disabled"
 	fdt set /soc/spi@01c69000/spidev@0 status "okay"
 fi
 

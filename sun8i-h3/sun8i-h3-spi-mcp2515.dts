@@ -40,7 +40,6 @@
 	fragment@3 {
 		target = <&spi0>;
 		__overlay__ {
-			status = "okay";
 			#address-cells = <1>;
 			#size-cells = <0>;
 			mcp2515@0 {
@@ -52,7 +51,7 @@
 				interrupt-parent = <&pio>;
 				interrupts = <0 7 IRQ_TYPE_EDGE_FALLING>; /* PA7 */
 				clocks = <&can0_osc_fixed>;
-				status = "okay";
+				status = "disabled";
 			};
 		};
 	};
@@ -60,7 +59,6 @@
 	fragment@4 {
 		target = <&spi1>;
 		__overlay__ {
-			status = "disabled";
 			#address-cells = <1>;
 			#size-cells = <0>;
 			mcp2515@0 {

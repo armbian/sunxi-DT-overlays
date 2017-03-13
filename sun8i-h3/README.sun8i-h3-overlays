@@ -14,7 +14,7 @@ Both SPI controllers have only one hardware CS,
 so SPI chip select is always set to 0
 
 Using software (GPIO) SPI chip selects is possible, but since
-GPIO pins cannot be changed dynamically dur to u-boot limitation,
+GPIO pins cannot be changed dynamically due to u-boot limitation,
 this feature is not used in provided overlays.
 
 ### Provided overlays:
@@ -44,25 +44,35 @@ functionality
 
 ### cir
 
-Activates CIR (Infrared remote) receiver connected to the standard pin (PL11)
+Activates CIR (Infrared remote) receiver
+
+CIR pin: PL11
 
 ### i2c0
 
-Activates TWI/I2C bus 0, exposed on pins PA11 and PA12
+Activates TWI/I2C bus 0
+
+I2C0 pins (SCL, SDA): PA11, PA12
 
 ### i2c1
 
-Activates TWI/I2C bus 1, exposed on pins PA18 and PA19
+Activates TWI/I2C bus 1
+
+I2C1 pins (SCL, SDA): PA18, PA19
 
 ### i2c2
 
-Activates TWI/I2C bus 2, exposed on pins PE12 and PE13
-On most board this but is wired to Camera (CSI) socket
+Activates TWI/I2C bus 2
+
+I2C2 pins (SCL, SDA): PE12, PE13
+
+On most board this bus is wired to Camera (CSI) socket
 
 ### spi-jedec-nor
 
 Activates MTD support for JEDEC compatible SPI NOR flash chips on SPI bus
 supported by the kernel SPI NOR driver
+
 SPI 0 pins (MOSI, MISO, SCK, CS): PC0, PC1, PC2, PC3
 SPI 1 pins (MOSI, MISO, SCK, CS): PA15, PA16, PA14, PA13
 
@@ -70,7 +80,7 @@ Parameters:
 
 param_spinor_spi_bus (int)
 	SPI bus to activate SPI NOR flash support on
-	Default: 0
+	Required
 	Supported values: 0, 1
 
 param_spinor_max_freq (int)
@@ -81,6 +91,7 @@ param_spinor_max_freq (int)
 ### spi-mcp2515
 
 Activates mcp2515 SPI CAN controller connected to SPI bus
+
 SPI 0 pins (MOSI, MISO, SCK, CS): PC0, PC1, PC2, PC3
 SPI 1 pins (MOSI, MISO, SCK, CS): PA15, PA16, PA14, PA13
 
@@ -88,7 +99,7 @@ Parameters:
 
 param_mcp2515_spi_bus (int)
 	SPI bus to activate mcp2515 support on
-	Default: 0
+	Required
 	Supported values: 0, 1
 
 param_mcp2515_clk_freq (int)
@@ -103,8 +114,8 @@ param_mcp2515_int_pin (pin)
 
 ### spi-spidev
 
-Activates SPIdev device node (/dev/spidev0.0 or /dev/spidev1.0)
-for userspace SPI access
+Activates SPIdev device node (/dev/spidevX.Y) for userspace SPI access,
+where X is the bus number and Y is the CS number
 
 SPI 0 pins (MOSI, MISO, SCK, CS): PC0, PC1, PC2, PC3
 SPI 1 pins (MOSI, MISO, SCK, CS): PA15, PA16, PA14, PA13
@@ -113,7 +124,7 @@ Parameters:
 
 param_spidev_spi_bus (int)
 	SPI bus to activate SPIdev support on
-	Default: 0
+	Required
 	Supported values: 0, 1
 
 param_spidev_max_freq (int)
@@ -124,6 +135,7 @@ param_spidev_max_freq (int)
 ### uart1
 
 Activates serial port 1 (/dev/ttyS1)
+
 UART 1 pins (TX, RX, RTS, CTS): PG6, PG7, PG8, PG9
 
 Parameters:
@@ -136,6 +148,7 @@ param_uart1_rtscts (bool)
 ### uart2
 
 Activates serial port 2 (/dev/ttyS2)
+
 UART 2 pins (TX, RX, RTS, CTS): PA0, PA1, PA2, PA3
 
 Parameters:
@@ -148,6 +161,7 @@ param_uart2_rtscts (bool)
 ### uart3
 
 Activates serial port 3 (/dev/ttyS3)
+
 UART 3 pins (TX, RX, RTS, CTS): PA13, PA14, PA15, PA16
 
 Parameters:

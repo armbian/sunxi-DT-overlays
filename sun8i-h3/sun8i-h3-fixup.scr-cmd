@@ -42,6 +42,21 @@ if test "${param_spidev_spi_bus}" = "1"; then
 	fdt set /soc/spi@01c69000/spidev@0 status "okay"
 fi
 
+if test "${param_ds1307_i2c_bus}" = "0"; then
+	fdt set /soc/i2c@01c2ac00 status "okay"
+	fdt set /soc/i2c@01c2ac00/ds1307@68 status "okay"
+fi
+
+if test "${param_ds1307_i2c_bus}" = "1"; then
+	fdt set /soc/i2c@01c2b000 status "okay"
+	fdt set /soc/i2c@01c2b000/ds1307@68 status "okay"
+fi
+
+if test "${param_ds1307_i2c_bus}" = "2"; then
+	fdt set /soc/i2c@01c2b400 status "okay"
+	fdt set /soc/i2c@01c2b400/ds1307@68 status "okay"
+fi
+
 if test -n "${param_mcp2515_clk_freq}"; then
 	fdt set /clocks/can0_osc_fixed clock-frequency "<${param_mcp2515_clk_freq}>"
 fi

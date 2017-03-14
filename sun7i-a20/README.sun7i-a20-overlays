@@ -24,6 +24,7 @@ I2C bus 0 is used for the AXP209 PMIC
 - i2c2
 - i2c3
 - i2c4
+- i2c-ds1307
 - nand
 - spdif-out
 - spi-jedec-nor
@@ -74,6 +75,17 @@ I2C3 pins (SCL, SDA): PI0, PI1
 Activates TWI/I2C bus 4
 
 I2C4 pins (SCL, SDA): PI2, PI3
+
+### i2c-ds1307
+
+Activates Maxim/Dallas DS1307 RTC support
+
+Parameters:
+
+param_ds1307_i2c_bus (int)
+	I2C bus RTC is connected to
+	Required
+	Supported values: 0, 1, 2, 3, 4
 
 ### nand
 

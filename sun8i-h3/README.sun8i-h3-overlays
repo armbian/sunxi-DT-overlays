@@ -24,6 +24,7 @@ this feature is not used in provided overlays.
 - i2c0
 - i2c1
 - i2c2
+- i2c-ds1307
 - spi-jedec-nor
 - spi-mcp2515
 - spi-spidev
@@ -67,6 +68,17 @@ Activates TWI/I2C bus 2
 I2C2 pins (SCL, SDA): PE12, PE13
 
 On most board this bus is wired to Camera (CSI) socket
+
+### i2c-ds1307
+
+Activates Maxim/Dallas DS1307 RTC support
+
+Parameters:
+
+param_ds1307_i2c_bus (int)
+	I2C bus RTC is connected to
+	Required
+	Supported values: 0, 1, 2
 
 ### spi-jedec-nor
 

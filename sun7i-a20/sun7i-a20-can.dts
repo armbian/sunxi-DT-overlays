@@ -18,7 +18,9 @@
 	fragment@1 {
 		target-path = "/soc@01c00000";
 		__overlay__ {
-			can0: can@01c2bc00 {
+			#address-cells = <1>;
+			#size-cells = <1>;
+			can@01c2bc00 {
 				compatible = "allwinner,sun4i-a10-can";
 				reg = <0x01c2bc00 0x400>;
 				interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;

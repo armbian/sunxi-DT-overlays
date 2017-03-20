@@ -25,6 +25,7 @@ this feature is not used in provided overlays.
 - i2c1
 - i2c2
 - i2c-ds1307
+- pps-gpio
 - spi-jedec-nor
 - spi-mcp2515
 - spi-spidev
@@ -79,6 +80,24 @@ param_ds1307_i2c_bus (int)
 	I2C bus RTC is connected to
 	Required
 	Supported values: 0, 1, 2
+
+### pps-gpio
+
+Activates pulse-per-second GPIO client
+
+Parameters:
+
+param_pps_pin (pin)
+	Pin PPS source is connected to
+	Optional
+	Default: PD14
+
+param_pps_falling_edge (bool)
+	Assert by falling edge
+	Optional
+	Default: 0
+	When set (to 1), assert is indicated by a falling edge
+		(instead of by a rising edge)
 
 ### spi-jedec-nor
 

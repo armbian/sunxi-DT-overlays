@@ -26,6 +26,7 @@ I2C bus 0 is used for the AXP209 PMIC
 - i2c4
 - i2c-ds1307
 - nand
+- pps-gpio
 - spdif-out
 - spi-jedec-nor
 - spi-mcp2515
@@ -93,6 +94,24 @@ Activates NAND controller
 
 This overlay should not be used until mainline MLC NAND support
 allows using NAND storage reliably
+
+### pps-gpio
+
+Activates pulse-per-second GPIO client
+
+Parameters:
+
+param_pps_pin (pin)
+	Pin PPS source is connected to
+	Optional
+	Default: PI15
+
+param_pps_falling_edge (bool)
+	Assert by falling edge
+	Optional
+	Default: 0
+	When set (to 1), assert is indicated by a falling edge
+		(instead of by a rising edge)
 
 ### spdif-out
 

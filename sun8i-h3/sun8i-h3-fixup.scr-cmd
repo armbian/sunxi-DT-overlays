@@ -95,6 +95,20 @@ if test -n "${param_spinor_max_freq}"; then
 	env delete tmp_spi_path
 fi
 
+if test -n "${param_pps_pin}"; then
+	setenv tmp_bank "${param_pps_pin}"
+	setenv tmp_pin "${param_pps_pin}"
+	run decompose_pin
+	fdt set /soc/pinctrl@01c20800/pps_pins pins "${param_pps_pin}"
+	fdt get value tmp_phandle /soc/pinctrl@01c20800 phandle
+	fdt set /pps@0 gpios "<${tmp_phandle} ${tmp_bank} ${tmp_pin} 0>"
+	env delete tmp_pin tmp_bank tmp_phandle
+fi
+
+if test "${param_pps_falling_edge}" = "1"; then
+	fdt set /pps@0 assert-falling-edge
+fi
+
 if test -n "${param_w1_pin}"; then
 	setenv tmp_bank "${param_w1_pin}"
 	setenv tmp_pin "${param_w1_pin}"

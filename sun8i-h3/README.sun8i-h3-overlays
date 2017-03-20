@@ -97,6 +97,7 @@ param_spinor_spi_bus (int)
 
 param_spinor_max_freq (int)
 	Maximum SPI frequency
+	Optional
 	Default: 1000000
 	Range: 3000 - 100000000
 
@@ -116,11 +117,13 @@ param_mcp2515_spi_bus (int)
 
 param_mcp2515_clk_freq (int)
 	Onboard oscillator clock frequency
+	Optional
 	Default: 8000000
 	Typical values: 8000000, 16000000
 
 param_mcp2515_int_pin (pin)
 	Interrupt pin
+	Optional
 	Default: PA7
 	Selected pin should support interrupts (EINT)
 
@@ -141,6 +144,7 @@ param_spidev_spi_bus (int)
 
 param_spidev_max_freq (int)
 	Maximum SPIdev frequency
+	Optional
 	Default: 1000000
 	Range: 3000 - 100000000
 
@@ -154,6 +158,7 @@ Parameters:
 
 param_uart1_rtscts (bool)
 	Enable RTS and CTS pins
+	Optional
 	Default: 0
 	Set to 1 to enable
 
@@ -167,6 +172,7 @@ Parameters:
 
 param_uart2_rtscts (bool)
 	Enable RTS and CTS pins
+	Optional
 	Default: 0
 	Set to 1 to enable CTS and RTS pins
 
@@ -180,6 +186,7 @@ Parameters:
 
 param_uart3_rtscts (bool)
 	Enable RTS and CTS pins
+	Optional
 	Default: 0
 	Set to 1 to enable CTS and RTS pins
 
@@ -204,11 +211,13 @@ Parameters:
 
 param_w1_pin (pin)
 	Data pin for 1-Wire master
+	Optional
 	Default: PD14
 
 param_w1_pin_int_pullup (bool)
 	Enable internal pull-up for the data pin
-	This option should not be used with multiple devices, parasite power setup
-		or long wires -	please use external pull-up resistor instead
+	Optional
 	Default: 0
 	Set to 1 to enable the pull-up
+	This option should not be used with multiple devices, parasite power setup
+		or long wires -	please use external pull-up resistor instead

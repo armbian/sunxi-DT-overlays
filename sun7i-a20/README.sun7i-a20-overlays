@@ -119,12 +119,14 @@ param_spinor_spi_bus (int)
 
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
+	Optional
 	Default: a
 	Supported values: a, b
+	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
 
 param_spinor_max_freq (int)
 	Maximum SPI frequency
+	Optional
 	Default: 1000000
 	Range: 3000 - 100000000
 
@@ -146,17 +148,20 @@ param_mcp2515_spi_bus (int)
 
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
+	Optional
 	Default: a
 	Supported values: a, b
+	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
 
 param_mcp2515_clk_freq (int)
 	Onboard oscillator clock frequency
+	Optional
 	Default: 8000000
 	Typical values: 8000000, 16000000
 
 param_mcp2515_int_pin (pin)
 	Interrupt pin
+	Optional
 	Default: PH15
 	Selected pin should support interrupts (EINT)
 
@@ -173,12 +178,14 @@ Parameters:
 
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
+	Optional
 	Default: a
 	Supported values: a, b
+	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
 
 param_spidev_max_freq (int)
 	Maximum SPIdev frequency
+	Optional
 	Default: 1000000
 	Range: 3000 - 100000000
 
@@ -192,6 +199,7 @@ Parameters:
 
 param_uart2_rtscts (bool)
 	Enable RTS and CTS pins
+	Optional
 	Default: 0
 	Set to 1 to enable CTS and RTS pins
 
@@ -205,6 +213,7 @@ Parameters:
 
 param_uart3_rtscts (bool)
 	Enable RTS and CTS pins
+	Optional
 	Default: 0
 	Set to 1 to enable CTS and RTS pins
 
@@ -219,6 +228,7 @@ Parameters:
 
 param_uart4_pins (char)
 	Determines what pins UART 4 is exposed on
+	Optional
 	Default: a
 	Supported values: a, b
 
@@ -249,11 +259,13 @@ Parameters:
 
 param_w1_pin (pin)
 	Data pin for 1-Wire master
+	Optional
 	Default: PI15
 
 param_w1_pin_int_pullup (bool)
 	Enable internal pull-up for the data pin
-	This option should not be used with multiple sensors or long wires -
-		please use external pull-up resistor instead
+	Optional
 	Default: 0
 	Set to 1 to enable the pull-up
+	This option should not be used with multiple sensors or long wires -
+		please use external pull-up resistor instead

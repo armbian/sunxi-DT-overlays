@@ -1,0 +1,34 @@
+/dts-v1/ /plugin/;
+
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+	compatible = "allwinner,sun4i-a10";
+
+	fragment@0 {
+		target = <&pio>;
+		__overlay__ {
+			can_pins: can_pins {
+				pins = "PH20", "PH21";
+				function = "can";
+			};
+		};
+	};
+
+	fragment@1 {
+		target-path = "/soc@01c00000";
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <1>;
+			can@01c2bc00 {
+				compatible = "allwinner,sun4i-a10-can";
+				reg = <0x01c2bc00 0x400>;
+				interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+				clocks = <&apb1_gates 4>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&can_pins>;
+				status = "okay";
+			};
+		};
+	};
+};

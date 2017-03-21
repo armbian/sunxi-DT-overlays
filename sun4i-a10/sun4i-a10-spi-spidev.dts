@@ -1,0 +1,64 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun4i-a10";
+
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			spi0 = "/soc/spi@01c05000";
+			spi1 = "/soc/spi@01c06000";
+			spi2 = "/soc/spi@01c17000";
+		};
+	};
+
+	fragment@1 {
+		target = <&spi0>;
+		__overlay__ {
+			pinctrl-names = "default", "default";
+			pinctrl-0 = <&spi0_pins_a>;
+			pinctrl-1 = <&spi0_cs0_pins_a>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			spidev {
+				compatible = "spidev";
+				status = "disabled";
+				reg = <0>;
+				spi-max-frequency = <1000000>;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&spi1>;
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <&spi1_pins_a>, <&spi1_cs0_pins_a>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			spidev {
+				compatible = "spidev";
+				status = "disabled";
+				reg = <0>;
+				spi-max-frequency = <1000000>;
+			};
+		};
+	};
+
+	fragment@3 {
+		target = <&spi2>;
+		__overlay__ {
+			pinctrl-names = "default", "default";
+			pinctrl-0 = <&spi2_pins_a>;
+			pinctrl-1 = <&spi2_cs0_pins_a>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			spidev {
+				compatible = "spidev";
+				status = "disabled";
+				reg = <0>;
+				spi-max-frequency = <1000000>;
+			};
+		};
+	};
+};

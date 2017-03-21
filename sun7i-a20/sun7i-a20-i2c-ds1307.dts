@@ -6,6 +6,7 @@
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {
+			i2c0 = "/soc@01c00000/i2c@01c2ac00"
 			i2c1 = "/soc@01c00000/i2c@01c2b000";
 			i2c2 = "/soc@01c00000/i2c@01c2b400";
 			i2c3 = "/soc@01c00000/i2c@01c2b800";
@@ -14,7 +15,7 @@
 	};
 
 	fragment@1 {
-		target = <&i2c1>;
+		target = <&i2c0>;
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -27,7 +28,7 @@
 	};
 
 	fragment@2 {
-		target = <&i2c2>;
+		target = <&i2c1>;
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -40,7 +41,7 @@
 	};
 
 	fragment@3 {
-		target = <&i2c3>;
+		target = <&i2c2>;
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -53,6 +54,19 @@
 	};
 
 	fragment@4 {
+		target = <&i2c3>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			ds1307@68 {
+				compatible = "dallas,ds1307";
+				reg = <0x68>;
+				status = "disabled";
+			};
+		};
+	};
+
+	fragment@5 {
 		target = <&i2c4>;
 		__overlay__ {
 			#address-cells = <1>;

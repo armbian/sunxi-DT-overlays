@@ -16,7 +16,7 @@
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			spidev@0 {
+			spidev {
 				compatible = "spidev";
 				status = "disabled";
 				reg = <0>;
@@ -30,7 +30,7 @@
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			spidev@0 {
+			spidev {
 				compatible = "spidev";
 				status = "disabled";
 				reg = <0>;

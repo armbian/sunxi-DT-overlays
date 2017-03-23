@@ -42,7 +42,7 @@
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			mcp2515@0 {
+			mcp2515 {
 				reg = <0>;
 				compatible = "microchip,mcp2515";
 				pinctrl-names = "default";
@@ -61,7 +61,7 @@
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			mcp2515@0 {
+			mcp2515 {
 				reg = <0>;
 				compatible = "microchip,mcp2515";
 				pinctrl-names = "default";

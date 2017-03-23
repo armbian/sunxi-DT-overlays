@@ -10,12 +10,8 @@ sun8i-h3 (Allwinner H3)
 
 Supported pin banks: PA, PC, PD, PG
 
-Both SPI controllers have only one hardware CS,
-so SPI chip select is always set to 0
-
-Using software (GPIO) SPI chip selects is possible, but since
-GPIO pins cannot be changed dynamically due to u-boot limitation,
-this feature is not used in provided overlays.
+Both SPI controllers have only one hardware CS pin exposed,
+adding fixed software (GPIO) chip selects is possible with a separate overlay
 
 ### Provided overlays:
 
@@ -26,6 +22,7 @@ this feature is not used in provided overlays.
 - i2c2
 - i2c-ds1307
 - pps-gpio
+- spi-add-cs1
 - spi-jedec-nor
 - spi-mcp2515
 - spi-spidev
@@ -99,6 +96,15 @@ param_pps_falling_edge (bool)
 	When set (to 1), assert is indicated by a falling edge
 		(instead of by a rising edge)
 
+### spi-add-cs1
+
+Adds support for using SPI chip select 1 with GPIO for both SPI controllers
+Respective GPIO will be claimed only if controller is enabled by another overlay
+This overlay is required for using chip select 1 with other SPI overlays
+
+SPI 0 pins (CS1): PA21
+SPI 1 pins (CS1): PA10
+
 ### spi-jedec-nor
 
 Activates MTD support for JEDEC compatible SPI NOR flash chips on SPI bus
@@ -113,6 +119,13 @@ param_spinor_spi_bus (int)
 	SPI bus to activate SPI NOR flash support on
 	Required
 	Supported values: 0, 1
+
+param_spinor_spi_cs (int)
+	SPI chip select number
+	Optional
+	Default: 0
+	Supported values: 0, 1
+	Using chip select 1 requires using "spi-add-cs1" overlay
 
 param_spinor_max_freq (int)
 	Maximum SPI frequency
@@ -133,6 +146,13 @@ param_mcp2515_spi_bus (int)
 	SPI bus to activate mcp2515 support on
 	Required
 	Supported values: 0, 1
+
+param_mcp2515_spi_cs (int)
+	SPI chip select number
+	Optional
+	Default: 0
+	Supported values: 0, 1
+	Using chip select 1 requires using "spi-add-cs1" overlay
 
 param_mcp2515_clk_freq (int)
 	Onboard oscillator clock frequency
@@ -160,6 +180,13 @@ param_spidev_spi_bus (int)
 	SPI bus to activate SPIdev support on
 	Required
 	Supported values: 0, 1
+
+param_spidev_spi_cs (int)
+	SPI chip select number
+	Optional
+	Default: 0
+	Supported values: 0, 1
+	Using chip select 1 requires using "spi-add-cs1" overlay
 
 param_spidev_max_freq (int)
 	Maximum SPIdev frequency

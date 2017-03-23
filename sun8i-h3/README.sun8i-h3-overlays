@@ -154,6 +154,12 @@ param_mcp2515_spi_cs (int)
 	Supported values: 0, 1
 	Using chip select 1 requires using "spi-add-cs1" overlay
 
+param_mcp2515_max_freq (int)
+	Maximum SPI frequency
+	Optional
+	Default: 10000000
+	Range: 3000 - 100000000
+
 param_mcp2515_clk_freq (int)
 	Onboard oscillator clock frequency
 	Optional

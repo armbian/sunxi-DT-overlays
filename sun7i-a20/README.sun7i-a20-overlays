@@ -165,6 +165,12 @@ param_mcp2515_spi_bus (int)
 	Required
 	Supported values: 0, 1, 2
 
+param_mcp2515_max_freq (int)
+	Maximum SPI frequency
+	Optional
+	Default: 10000000
+	Range: 3000 - 100000000
+
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant
 	Optional

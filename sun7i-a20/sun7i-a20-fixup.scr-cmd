@@ -24,6 +24,9 @@ if test -n "${param_spinor_spi_bus}"; then
 	if test -n "${param_spinor_max_freq}"; then
 		fdt set /soc@01c00000/${tmp_spi_path}/spiflash spi-max-frequency "<${param_spinor_max_freq}>"
 	fi
+	if test "${param_spinor_spi_bus}" = "0" && test "${param_spinor_spi_cs}" = "1"; then
+		fdt set /soc@01c00000/${tmp_spi_path}/spiflash reg "<1>"
+	fi
 	env delete tmp_spi_path
 fi
 
@@ -35,6 +38,9 @@ if test -n "${param_mcp2515_spi_bus}"; then
 	fdt set /soc@01c00000/${tmp_spi_path}/mcp2515 status "okay"
 	if test -n "${param_mcp2515_max_freq}"; then
 		fdt set /soc@01c00000/${tmp_spi_path}/mcp2515 spi-max-frequency "<${param_mcp2515_max_freq}>"
+	fi
+	if test "${param_mcp2515_spi_bus}" = "0" && test "${param_mcp2515_spi_cs}" = "1"; then
+		fdt set /soc@01c00000/${tmp_spi_path}/mcp2515 reg "<1>"
 	fi
 	if test -n "${param_mcp2515_int_pin}"; then
 		setenv tmp_bank "${param_mcp2515_int_pin}"
@@ -55,6 +61,9 @@ if test -n "${param_spidev_spi_bus}"; then
 	fdt set /soc@01c00000/${tmp_spi_path}/spidev status "okay"
 	if test -n "${param_spidev_max_freq}"; then
 		fdt set /soc@01c00000/${tmp_spi_path}/spidev spi-max-frequency "<${param_spidev_max_freq}>"
+	fi
+	if test "${param_spidev_spi_bus}" = "0" && test "${param_spidev_spi_cs}" = "1"; then
+		fdt set /soc@01c00000/${tmp_spi_path}/spidev reg "<1>"
 	fi
 	env delete tmp_spi_path
 fi

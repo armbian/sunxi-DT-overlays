@@ -1,0 +1,15 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun7i-a20";
+
+	fragment@0 {
+		target = <&spi0>;
+		__overlay__ {
+			pinctrl-names = "default", "default", "default";
+			pinctrl-0 = <&spi0_pins_a>;
+			pinctrl-1 = <&spi0_cs0_pins_a>;
+			pinctrl-2 = <&spi0_cs1_pins_a>;
+		};
+	};
+};

@@ -28,6 +28,7 @@ I2C bus 0 is used for the AXP209 PMIC
 - nand
 - pps-gpio
 - spdif-out
+- spi-add-cs1
 - spi-jedec-nor
 - spi-mcp2515
 - spi-spidev
@@ -119,6 +120,13 @@ Activates SPDIF/Toslink audio output
 
 SPDIF pin: PB13
 
+### spi-add-cs1
+
+Activates SPI chip select 1 on SPI controller 0
+This overlay is required for using chip select 1 with other SPI overlays
+
+SPI 0 CS1 pin: PI14
+
 ### spi-jedec-nor
 
 Activates MTD support for JEDEC compatible SPI NOR flash chips on SPI bus
@@ -135,6 +143,13 @@ param_spinor_spi_bus (int)
 	SPI bus to activate SPI NOR flash support on
 	Required
 	Supported values: 0, 1, 2
+
+param_spinor_spi_cs (int)
+	SPI chip select number for SPI NOR connected to SPI bus 0
+	Optional
+	Default: 0
+	Supported values: 0, 1
+	Using chip select 1 on SPI 0 requires using "spi-add-cs1" overlay
 
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant
@@ -164,6 +179,13 @@ param_mcp2515_spi_bus (int)
 	SPI bus to activate mcp2515 support on
 	Required
 	Supported values: 0, 1, 2
+
+param_mcp2515_spi_cs (int)
+	SPI chip select number for MCP2515 connected to SPI bus 0
+	Optional
+	Default: 0
+	Supported values: 0, 1
+	Using chip select 1 on SPI 0 requires using "spi-add-cs1" overlay
 
 param_mcp2515_max_freq (int)
 	Maximum SPI frequency
@@ -200,6 +222,18 @@ SPI 2 pins a (MOSI, MISO, SCK, CS0): PC21, PC22, PC20, PC19
 SPI 2 pins b (MOSI, MISO, SCK, CS0): PB16, PB17, PB15, PB14
 
 Parameters:
+
+param_spidev_spi_bus (int)
+	SPI bus to activate mcp2515 support on
+	Required
+	Supported values: 0, 1, 2
+
+param_spidev_spi_cs (int)
+	SPI chip select number for SPIdev on SPI bus 0
+	Optional
+	Default: 0
+	Supported values: 0, 1
+	Using chip select 1 on SPI 0 requires using "spi-add-cs1" overlay
 
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant

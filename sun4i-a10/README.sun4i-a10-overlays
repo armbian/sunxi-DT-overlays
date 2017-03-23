@@ -151,6 +151,12 @@ param_mcp2515_spi_bus (int)
 	Required
 	Supported values: 0, 1, 2
 
+param_mcp2515_max_freq (int)
+	Maximum SPI frequency
+	Optional
+	Default: 10000000
+	Range: 3000 - 100000000
+
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant
 	Optional
@@ -172,7 +178,8 @@ param_mcp2515_int_pin (pin)
 
 ### spi-spidev
 
-Activates SPIdev device node (/dev/spidev0.0) for userspace SPI access
+Activates SPIdev device node (/dev/spidevX.Y) for userspace SPI access,
+where X is the bus number and Y is the CS number
 
 SPI 0 pins (MOSI, MISO, SCK, CS0, CS1): PI12, PI13, PI11, PI10, PI14
 SPI 1 pins (MOSI, MISO, SCK, CS0): PI18, PI19, PI17, PI16
@@ -180,6 +187,11 @@ SPI 2 pins a (MOSI, MISO, SCK, CS0): PC21, PC22, PC20, PC19
 SPI 2 pins b (MOSI, MISO, SCK, CS0): PB16, PB17, PB15, PB14
 
 Parameters:
+
+param_spidev_spi_bus (int)
+	SPI bus to activate mcp2515 support on
+	Required
+	Supported values: 0, 1, 2
 
 param_spi2_bus_pins (char)
 	SPI bus 2 pinmux variant

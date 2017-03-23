@@ -214,7 +214,8 @@ param_mcp2515_int_pin (pin)
 
 ### spi-spidev
 
-Activates SPIdev device node (/dev/spidev0.0) for userspace SPI access
+Activates SPIdev device node (/dev/spidevX.Y) for userspace SPI access,
+where X is the bus number and Y is the CS number
 
 SPI 0 pins (MOSI, MISO, SCK, CS0, CS1): PI12, PI13, PI11, PI10, PI14
 SPI 1 pins (MOSI, MISO, SCK, CS0): PI18, PI19, PI17, PI16

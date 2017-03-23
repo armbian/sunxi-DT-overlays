@@ -13,6 +13,11 @@
 	fragment@1 {
 		target = <&pio>;
 		__overlay__ {
+			uart2_pins_a: uart2@0 {
+				pins = "PI16", "PI17", "PI18", "PI19";
+				function = "uart2";
+			};
+
 			uart2_pins_a_2: uart2@1 {
 				pins = "PI18", "PI19";
 				function = "uart2";

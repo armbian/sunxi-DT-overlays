@@ -22,6 +22,7 @@ adding fixed software (GPIO) chip selects is possible with a separate overlay
 - i2c2
 - i2c-ds1307
 - pps-gpio
+- pwm
 - spi-add-cs1
 - spi-jedec-nor
 - spi-mcp2515
@@ -96,10 +97,20 @@ param_pps_falling_edge (bool)
 	When set (to 1), assert is indicated by a falling edge
 		(instead of by a rising edge)
 
+### pwm
+
+Activates hardware PWM controller
+
+PWM pin: PA5
+
+Pin PA5 is used as UART0 RX by default, so if this overlay is activated,
+UART0 will be disabled
+
 ### spi-add-cs1
 
 Adds support for using SPI chip select 1 with GPIO for both SPI controllers
-Respective GPIO will be claimed only if controller is enabled by another overlay
+Respective GPIO will be claimed only if controller is enabled by another
+overlay
 This overlay is required for using chip select 1 with other SPI overlays
 
 SPI 0 pins (CS1): PA21

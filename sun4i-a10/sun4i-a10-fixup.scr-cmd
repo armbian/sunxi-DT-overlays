@@ -96,6 +96,18 @@ if test "${param_pps_falling_edge}" = "1"; then
 	fdt set /pps@0 assert-falling-edge
 fi
 
+if test "${param_pwm_pins}" = "0"; then
+	fdt get value tmp_phandle /soc@01c00000/pinctrl@01c20800/pwm0@0
+	fdt set /soc@01c00000/pwm@01c20e00 pinctrl-0 "<${tmp_phandle}>"
+	env delete tmp_phandle
+fi
+
+if test "${param_pwm_pins}" = "1"; then
+	fdt get value tmp_phandle /soc@01c00000/pinctrl@01c20800/pwm1@0
+	fdt set /soc@01c00000/pwm@01c20e00 pinctrl-0 "<${tmp_phandle}>"
+	env delete tmp_phandle
+fi
+
 if test -n "${param_w1_pin}"; then
 	setenv tmp_bank "${param_w1_pin}"
 	setenv tmp_pin "${param_w1_pin}"

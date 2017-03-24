@@ -27,6 +27,7 @@ I2C bus 0 is used for the AXP209 PMIC
 - i2c-ds1307
 - nand
 - pps-gpio
+- pwm
 - spdif-out
 - spi-add-cs1
 - spi-jedec-nor
@@ -113,6 +114,22 @@ param_pps_falling_edge (bool)
 	Default: 0
 	When set (to 1), assert is indicated by a falling edge
 		(instead of by a rising edge)
+
+### pwm
+
+Activates hardware PWM controller
+
+PWM pins (PWM0, PWM1): PB2, PI3
+
+Parameters:
+
+param_pwm_pins (string)
+	PWM pins activated with this overlay
+	Default: both
+	Supported values: 0, 1, both
+	If set to 0 only PWM0 can be used,
+		if set to 1 then only PWM1 can be used,
+		if set to both (default), both PWM0 and PWM1 can be used
 
 ### spdif-out
 

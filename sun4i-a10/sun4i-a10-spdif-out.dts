@@ -26,11 +26,11 @@
 				simple-audio-card,codec {
 					sound-dai = <&spdif_out>;
 				};
+			};
 
-				spdif_out: spdif-out {
-					#sound-dai-cells = <0>;
-					compatible = "linux,spdif-dit";
-				};
+			spdif_out: spdif-out {
+				#sound-dai-cells = <0>;
+				compatible = "linux,spdif-dit";
 			};
 		};
 	};

@@ -110,6 +110,7 @@ Parameters:
 
 param_pwm_pins (string)
 	PWM pins activated with this overlay
+	Optional
 	Default: both
 	Supported values: 0, 1, both
 	If set to 0 only PWM0 can be used,

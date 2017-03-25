@@ -104,7 +104,7 @@ Activates hardware PWM controller
 PWM pin: PA5
 
 Pin PA5 is used as UART0 RX by default, so if this overlay is activated,
-UART0 will be disabled
+UART0 and kernel console on ttyS0 will be disabled
 
 ### spi-add-cs1
 

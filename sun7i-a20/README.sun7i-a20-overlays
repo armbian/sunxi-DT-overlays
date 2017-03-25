@@ -25,6 +25,7 @@ I2C bus 0 is used for the AXP209 PMIC
 - i2c3
 - i2c4
 - i2c-ds1307
+- mmc2
 - nand
 - pps-gpio
 - pwm
@@ -89,6 +90,20 @@ param_ds1307_i2c_bus (int)
 	I2C bus RTC is connected to
 	Required
 	Supported values: 0, 1, 2, 3, 4
+
+### mmc2
+
+Activates SD/MMC controller 2. To be used on boards with second SD slot
+instead of NAND storage.
+
+MMC2 pins: PC6, PC7, PC8, PC9, PC10, PC11
+
+Parameters:
+
+param_mmc2_cd_pin (pin)
+	MMC 2 card detect pin
+	Optional
+	Default: PH0
 
 ### nand
 

@@ -127,6 +127,14 @@ if test -n "${param_w1_pin}"; then
 	env delete tmp_pin tmp_bank tmp_phandle
 fi
 
+if test -n "${param_mmc2_cd_pin}"; then
+	setenv tmp_bank "${param_mmc2_cd_pin}"
+	setenv tmp_pin "${param_mmc2_cd_pin}"
+	run decompose_pin
+	fdt get value tmp_phandle /soc@01c00000/pinctrl@01c20800 phandle
+	fdt set /soc@01c00000/mmc@01c11000 cd-gpios "<${tmp_phandle} ${tmp_bank} ${tmp_pin} 1>"
+fi
+
 if test "${param_w1_pin_int_pullup}" = "1"; then
 	fdt set /soc@01c00000/pinctrl@01c20800/w1_pins bias-pull-up
 fi

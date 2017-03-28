@@ -1,8 +1,8 @@
 # Device Tree overlays for sunxi devices
 
-## End user documentation
+### :orange_book: [End user documentation](https://docs.armbian.com/Hardware_Allwinner_overlays/)
 
-### https://docs.armbian.com/Hardware_Allwinner_overlays/
+### :speech_balloon: [Forum thread for issues and suggestions](https://forum.armbian.com/index.php?/topic/3787-testers-wanted-sunxi-device-tree-overlays/)
 
 ## Technical info
 

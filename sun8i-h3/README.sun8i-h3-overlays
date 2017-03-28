@@ -112,6 +112,8 @@ Adds support for using SPI chip select 1 with GPIO for both SPI controllers
 Respective GPIO will be claimed only if controller is enabled by another
 overlay
 This overlay is required for using chip select 1 with other SPI overlays
+Due to the u-boot limitations CS1 pin can't be customized by a parameter, but
+it can be changed by using an edited copy of this overlay
 
 SPI 0 pins (CS1): PA21
 SPI 1 pins (CS1): PA10

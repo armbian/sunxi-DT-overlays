@@ -135,6 +135,11 @@ if test -n "${param_mmc2_cd_pin}"; then
 	fdt set /soc@01c00000/mmc@01c11000 cd-gpios "<${tmp_phandle} ${tmp_bank} ${tmp_pin} 1>"
 fi
 
+if test "${param_mmc2_non_removable}" = "1"; then
+	fdt rm /soc@01c00000/mmc@01c11000 cd-gpios
+	fdt set /soc@01c00000/mmc@01c11000 non-removable
+fi
+
 if test "${param_w1_pin_int_pullup}" = "1"; then
 	fdt set /soc@01c00000/pinctrl@01c20800/w1_pins bias-pull-up
 fi

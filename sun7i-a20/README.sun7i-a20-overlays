@@ -93,17 +93,23 @@ param_ds1307_i2c_bus (int)
 
 ### mmc2
 
-Activates SD/MMC controller 2. To be used on boards with second SD slot
-instead of NAND storage.
+Activates SD/MMC controller 2. To be used on boards with second SD slot, eMMC
+or tSD instead of NAND storage.
 
 MMC2 pins: PC6, PC7, PC8, PC9, PC10, PC11
 
 Parameters:
 
 param_mmc2_cd_pin (pin)
-	MMC 2 card detect pin
+	SD/MMC 2 card detect pin
 	Optional
 	Default: PH0
+
+param_mmc2_non_removable (bool)
+	Option for non-removable storage options on MMC 2 controller (eMMC or tSD)
+	Optional
+	Default: 0
+	Set to 1 to use this option
 
 ### nand
 

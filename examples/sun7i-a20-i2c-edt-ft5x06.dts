@@ -1,0 +1,29 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun7i-a20";
+
+	fragment@0 {
+		target = <&i2c3>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			pinctrl-names = "default";
+			pinctrl-0 = <&i2c3_pins_a>;
+			edt-ft5x06@38 {
+				compatible = "edt,edt-ft5406", "edt,edt-ft5x06";
+				status = "okay";
+				reg = <0x38>;
+				interrupt-parent = <&pio>;
+				interrupts = <7 9 2>; /* PH9 IRQ_TYPE_EDGE_FALLING */
+				wake-gpios = <7 7 1>; /* PH7 GPIO_ACTIVE_LOW */
+				touchscreen-size-x = <1024>;
+				touchscreen-size-y = <600>;
+				touchscreen-inverted-x;
+				touchscreen-swapped-x-y;
+			};
+		};
+
+	};
+};

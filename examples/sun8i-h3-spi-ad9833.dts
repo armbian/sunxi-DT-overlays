@@ -1,0 +1,62 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			spi0 = "/soc/spi@01c68000";
+		};
+	};
+
+	fragment@1 {
+		target-path = "/clocks";
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <1>;
+			ad983x_osc_fixed: ad983x_osc_fixed {
+				compatible = "fixed-clock";
+				#clock-cells = <0>;
+				clock-frequency  = <25000000>;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&pio>;
+		__overlay__ {
+			spi0_cs1: spi0_cs1 {
+				pins = "PA21";
+				function = "gpio_out";
+				output-high;
+			};
+		};
+	};
+
+	fragment@3 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			pinctrl-names = "default", "default";
+			pinctrl-1 = <&spi0_cs1>;
+			cs-gpios = <0>, <&pio 0 21 0>; /* 0: Native, 1: PA21 */
+			status = "okay";
+			ad9833@0 {
+				reg = <0>; /* Chip Select 0 */
+				compatible = "adi,ad9833";
+				spi-max-frequency = <10000000>;
+				clocks = <&ad983x_osc_fixed>;
+				status = "okay";
+			};
+
+			mcp41010@1 {
+				reg = <1>; /* Chip Select 1 */
+				compatible = "spidev";
+				spi-max-frequency = <500000>;
+				status = "okay";
+			};
+		};
+	};
+};

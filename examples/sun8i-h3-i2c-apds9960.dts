@@ -1,0 +1,41 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			i2c0 = "/soc/i2c@01c2ac00";
+		};
+	};
+
+	fragment@1 {
+		target = <&pio>;
+		__overlay__ {
+			apds9960_pin_irq: apds9960_pin_irq {
+				pins = "PA10";
+				function = "irq";
+				bias-pull-up;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&i2c0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			apds9960@39 {
+				compatible = "avago,apds9960";
+				reg = <0x39>;
+				pinctrl-names = "default";
+				pinctrl-0 = <&apds9960_pin_irq>;
+				interrupt-parent = <&pio>;
+				interrupts = <0 10 2>; /* PA10 IRQ_TYPE_EDGE_FALLING */
+				status = "okay";
+			};
+		};
+	};
+};

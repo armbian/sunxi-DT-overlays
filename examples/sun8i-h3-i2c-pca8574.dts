@@ -1,0 +1,47 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			i2c0 = "/soc/i2c@01c2ac00";
+		};
+	};
+
+	fragment@1 {
+		/* This fragment is required only if using interrupts */
+		target = <&pio>;
+		__overlay__ {
+			pca8574_pin_irq: pca8574_pin_irq {
+				pins = "PA10";
+				function = "irq";
+				bias-pull-up;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&i2c0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			pca8574@70 {
+				compatible = "nxp,pca8574";
+				reg = <0x70>;
+				status = "okay";
+				gpio-controller;
+				#gpio-cells = <2>;
+				/* Below are optional properties for supporting interrupts */
+				interrupt-controller;
+				#interrupt-cells = <2>;
+				interrupt-parent = <&pio>;
+				interrupts = <0 10 2>; /* PA10 IRQ_TYPE_EDGE_FALLING */
+				pinctrl-names = "default";
+				pinctrl-0 = <&pca8574_pin_irq>;
+			};
+		};
+	};
+};

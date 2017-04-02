@@ -1,0 +1,35 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		/* This fragment is needed only for the internal pull-up activation,
+			external pull-up resistor is highly recommended if using long wires */
+		target = <&pio>;
+		__overlay__ {
+			gpio_button_0: gpio_button_0 {
+				pins = "PA10";
+				function = "gpio_in";
+				bias-pull-up;
+			};
+		};
+	};
+
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			gpio-keys-user {
+				compatible = "gpio-keys";
+				pinctrl-names = "default";
+				pinctrl-0 = <&gpio_button_0>;
+
+				power_button {
+					label = "GPIO Key Power";
+					linux,code = <116>; /* KEY_POWER, see include/uapi/linux/input-event-codes.h */
+					gpios = <&pio 0 10 1>; /* PA10 GPIO_ACTIVE_LOW */
+				};
+			};
+		};
+	};
+};

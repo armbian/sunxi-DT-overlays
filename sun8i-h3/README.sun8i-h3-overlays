@@ -1,6 +1,6 @@
 This document describes overlays provided in the kernel packages
 For generic Armbian overlays documentation please see
-https://docs.armbian.com/Hardware_Allwinner_overlays/
+https://docs.armbian.com/User-Guide_Allwinner_overlays/
 
 ### Platform:
 
@@ -23,6 +23,7 @@ adding fixed software (GPIO) chip selects is possible with a separate overlay
 - i2c-ds1307
 - pps-gpio
 - pwm
+- spdif-out
 - spi-add-cs1
 - spi-jedec-nor
 - spi-mcp2515
@@ -105,6 +106,12 @@ PWM pin: PA5
 
 Pin PA5 is used as UART0 RX by default, so if this overlay is activated,
 UART0 and kernel console on ttyS0 will be disabled
+
+### spdif-out
+
+Activates SPDIF/Toslink audio output
+
+SPDIF pin: PA17
 
 ### spi-add-cs1
 
@@ -271,7 +278,8 @@ Activates USB host controller 3
 ### w1-gpio
 
 Activates 1-Wire GPIO master
-Requires external pull-up resistor on data pin
+Requires an external pull-up resistor on the data pin
+or enabling the internal pull-up
 
 Parameters:
 

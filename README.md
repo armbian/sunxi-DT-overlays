@@ -33,7 +33,7 @@ Overlay files referenced by `overlays` and `user_overlays` variables are loaded 
 - U-boot `fdt` command does not support "list of cells" values which limits implementing things like GPIO SPI chip selects with variable GPIO pins that require this type of values:
 
 ```
-cs-gpios = <0>, <&pio 0 1>, <&pio 7 7>; /* Native, PA1, PH7 */
+cs-gpios = <0>, <&pio 0 1 0>, <&pio 7 7 0>; /* Native, PA1, PH7 */
 ```
 
 - U-boot does not support overlay parameters, so changing values is implemented via executing a "fixup" script after all overlays were applied. This script uses environment variables loaded from `/boot/armbianEnv.txt` to change the live tree using `fdt` command.

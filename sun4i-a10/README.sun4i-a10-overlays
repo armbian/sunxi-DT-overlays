@@ -1,6 +1,6 @@
 This document describes overlays provided in the kernel packages
 For generic Armbian overlays documentation please see
-https://docs.armbian.com/Hardware_Allwinner_overlays/
+https://docs.armbian.com/User-Guide_Allwinner_overlays/
 
 ### Platform:
 
@@ -288,7 +288,8 @@ UART 7 pins (TX, RX): PI20, PI21
 ### w1-gpio
 
 Activates 1-Wire GPIO master
-Requires external pull-up resistor on data pin
+Requires an external pull-up resistor on the data pin
+or enabling the internal pull-up
 
 Parameters:
 

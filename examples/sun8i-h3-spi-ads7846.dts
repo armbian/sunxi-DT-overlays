@@ -1,0 +1,52 @@
+/dts-v1/ /plugin/;
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			spi0 = "/soc/spi@01c68000";
+		};
+	};
+
+	fragment@1 {
+		target = <&pio>;
+		__overlay__ {
+			ads7846_pins: ads7846_pins {
+				pins= "PA7";
+				function = "irq";
+           		};
+		};
+	};
+
+	fragment@2 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			ads7846@0 {
+				compatible = "ti,ads7846";
+				reg = <0>; /* Chip Select 0 */
+				status = "okay";
+				pinctrl-names = "default";
+				pinctrl-0 = <&ads7846_pins>;
+				spi-max-frequency = <2000000>;
+				interrupt-parent = <&pio>;
+				interrupts = <0 7 2>; /* PA7 IRQ_TYPE_EDGE_FALLING */
+				pendown-gpio = <&pio 0 7 0>; /* PA7 */
+
+				/* driver defaults, optional */
+				ti,x-min = /bits/ 16 <0>;
+				ti,y-min = /bits/ 16 <0>;
+				ti,x-max = /bits/ 16 <0x0FFF>;
+				ti,y-max = /bits/ 16 <0x0FFF>;
+				ti,pressure-min = /bits/ 16 <0>;
+				ti,pressure-max = /bits/ 16 <0xFFFF>;
+				ti,x-plate-ohms = /bits/ 16 <400>;
+			};
+		};
+	};
+};

@@ -22,13 +22,11 @@ I2C bus 0 is used for the AXP209 PMIC
 - can
 - i2c1
 - i2c2
-- i2c-ds1307
 - nand
 - pps-gpio
 - pwm
 - spdif-out
 - spi-jedec-nor
-- spi-mcp2515
 - spi-spidev
 - uart1
 - uart2
@@ -63,17 +61,6 @@ I2C1 pins (SCL, SDA): PB18, PB19
 Activates TWI/I2C bus 2
 
 I2C2 pins (SCL, SDA): PB20, PB21
-
-### i2c-ds1307
-
-Activates Maxim/Dallas DS1307 RTC support
-
-Parameters:
-
-param_ds1307_i2c_bus (int)
-	I2C bus RTC is connected to
-	Required
-	Supported values: 0, 1, 2
 
 ### nand
 
@@ -152,47 +139,6 @@ param_spinor_max_freq (int)
 	Optional
 	Default: 1000000
 	Range: 3000 - 100000000
-
-### spi-mcp2515
-
-Activates mcp2515 SPI CAN controller connected to SPI bus
-
-SPI 0 pins (MOSI, MISO, SCK, CS0, CS1): PI12, PI13, PI11, PI10, PI14
-SPI 1 pins (MOSI, MISO, SCK, CS0): PI18, PI19, PI17, PI16
-SPI 2 pins a (MOSI, MISO, SCK, CS0): PC21, PC22, PC20, PC19
-SPI 2 pins b (MOSI, MISO, SCK, CS0): PB16, PB17, PB15, PB14
-
-Parameters:
-
-param_mcp2515_spi_bus (int)
-	SPI bus to activate mcp2515 support on
-	Required
-	Supported values: 0, 1, 2
-
-param_mcp2515_max_freq (int)
-	Maximum SPI frequency
-	Optional
-	Default: 10000000
-	Range: 3000 - 100000000
-
-param_spi2_bus_pins (char)
-	SPI bus 2 pinmux variant
-	Optional
-	Default: a
-	Supported values: a, b
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
-
-param_mcp2515_clk_freq (int)
-	Onboard oscillator clock frequency
-	Optional
-	Default: 8000000
-	Typical values: 8000000, 16000000
-
-param_mcp2515_int_pin (pin)
-	Interrupt pin
-	Optional
-	Default: PH15
-	Selected pin should support interrupts (EINT)
 
 ### spi-spidev
 

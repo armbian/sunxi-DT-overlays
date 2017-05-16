@@ -5,13 +5,6 @@
 	compatible = "allwinner,sun8i-h3";
 
 	fragment@0 {
-		target-path = "/aliases";
-		__overlay__ {
-			spi0 = "/soc/spi@01c68000";
-		};
-	};
-
-	fragment@1 {
 		target = <&pio>;
 		__overlay__ {
 			ads7846_pins: ads7846_pins {
@@ -21,7 +14,7 @@
 		};
 	};
 
-	fragment@2 {
+	fragment@1 {
 		target = <&spi0>;
 		__overlay__ {
 			#address-cells = <1>;

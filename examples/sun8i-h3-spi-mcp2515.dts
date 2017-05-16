@@ -7,14 +7,6 @@
 	compatible = "allwinner,sun8i-h3";
 
 	fragment@0 {
-		target-path = "/aliases";
-		__overlay__ {
-			spi0 = "/soc/spi@01c68000";
-			spi1 = "/soc/spi@01c69000";
-		};
-	};
-
-	fragment@1 {
 		target-path = "/clocks";
 		__overlay__ {
 			#address-cells = <1>;
@@ -27,7 +19,7 @@
 		};
 	};
 
-	fragment@2 {
+	fragment@1 {
 		target = <&pio>;
 		__overlay__ {
 			can0_pin_irq: can0_pin_irq {
@@ -38,11 +30,12 @@
 		};
 	};
 
-	fragment@3 {
+	fragment@2 {
 		target = <&spi0>;
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
+			status = "okay";
 			mcp2515 {
 				reg = <0>;
 				compatible = "microchip,mcp2515";
@@ -52,26 +45,7 @@
 				interrupt-parent = <&pio>;
 				interrupts = <0 7 IRQ_TYPE_EDGE_FALLING>; /* PA7 */
 				clocks = <&can0_osc_fixed>;
-				status = "disabled";
-			};
-		};
-	};
-
-	fragment@4 {
-		target = <&spi1>;
-		__overlay__ {
-			#address-cells = <1>;
-			#size-cells = <0>;
-			mcp2515 {
-				reg = <0>;
-				compatible = "microchip,mcp2515";
-				pinctrl-names = "default";
-				pinctrl-0 = <&can0_pin_irq>;
-				spi-max-frequency = <10000000>;
-				interrupt-parent = <&pio>;
-				interrupts = <0 7 IRQ_TYPE_EDGE_FALLING>; /* PA7 */
-				clocks = <&can0_osc_fixed>;
-				status = "disabled";
+				status = "okay";
 			};
 		};
 	};

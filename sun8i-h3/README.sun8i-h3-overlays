@@ -20,13 +20,11 @@ adding fixed software (GPIO) chip selects is possible with a separate overlay
 - i2c0
 - i2c1
 - i2c2
-- i2c-ds1307
 - pps-gpio
 - pwm
 - spdif-out
 - spi-add-cs1
 - spi-jedec-nor
-- spi-mcp2515
 - spi-spidev
 - uart1
 - uart2
@@ -68,17 +66,6 @@ Activates TWI/I2C bus 2
 I2C2 pins (SCL, SDA): PE12, PE13
 
 On most board this bus is wired to Camera (CSI) socket
-
-### i2c-ds1307
-
-Activates Maxim/Dallas DS1307 RTC support
-
-Parameters:
-
-param_ds1307_i2c_bus (int)
-	I2C bus RTC is connected to
-	Required
-	Supported values: 0, 1, 2
 
 ### pps-gpio
 
@@ -153,45 +140,6 @@ param_spinor_max_freq (int)
 	Optional
 	Default: 1000000
 	Range: 3000 - 100000000
-
-### spi-mcp2515
-
-Activates mcp2515 SPI CAN controller connected to SPI bus
-
-SPI 0 pins (MOSI, MISO, SCK, CS): PC0, PC1, PC2, PC3
-SPI 1 pins (MOSI, MISO, SCK, CS): PA15, PA16, PA14, PA13
-
-Parameters:
-
-param_mcp2515_spi_bus (int)
-	SPI bus to activate mcp2515 support on
-	Required
-	Supported values: 0, 1
-
-param_mcp2515_spi_cs (int)
-	SPI chip select number
-	Optional
-	Default: 0
-	Supported values: 0, 1
-	Using chip select 1 requires using "spi-add-cs1" overlay
-
-param_mcp2515_max_freq (int)
-	Maximum SPI frequency
-	Optional
-	Default: 10000000
-	Range: 3000 - 100000000
-
-param_mcp2515_clk_freq (int)
-	Onboard oscillator clock frequency
-	Optional
-	Default: 8000000
-	Typical values: 8000000, 16000000
-
-param_mcp2515_int_pin (pin)
-	Interrupt pin
-	Optional
-	Default: PA7
-	Selected pin should support interrupts (EINT)
 
 ### spi-spidev
 

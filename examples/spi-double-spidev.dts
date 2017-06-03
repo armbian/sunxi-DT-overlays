@@ -2,7 +2,7 @@
 /plugin/;
 
 / {
-	compatible = "allwinner,sun8i-h3";
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
 
 	fragment@0 {
 		target = <&spi0>;
@@ -10,6 +10,7 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 			status = "okay";
+
 			spidev@0 {
 				reg = <0>; /* Chip Select 0 */
 				compatible = "spidev";

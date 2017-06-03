@@ -2,11 +2,13 @@
 /plugin/;
 
 / {
-	compatible = "allwinner,sun8i-h3";
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
 
+	/*
+	 * This fragment is needed only for the internal pull-up activation,
+	 * external pull-up resistor is highly recommended if using long wires
+	 */
 	fragment@0 {
-		/* This fragment is needed only for the internal pull-up activation,
-			external pull-up resistor is highly recommended if using long wires */
 		target = <&pio>;
 		__overlay__ {
 			gpio_button_0: gpio_button_0 {
@@ -21,6 +23,10 @@
 		target-path = "/";
 		__overlay__ {
 			gpio-keys-user {
+				/*
+				 * Use "gpio-keys" for EINT capable pins, "gpio-keys-polled" for other pins
+				 * add "poll-interval" property if using "gpio-keys-polled"
+				 */
 				compatible = "gpio-keys";
 				pinctrl-names = "default";
 				pinctrl-0 = <&gpio_button_0>;

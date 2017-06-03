@@ -1,0 +1,31 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
+
+	/* 
+	 * Aliases can be used to set the external RTC as rtc0
+	 * Needs supplying the correct path to the I2C controller RTC is connected to,
+	 * this example is for I2C1 on H3
+	 * /
+	fragment@0 {
+		target-path = "/aliases";
+		__overlay__ {
+			rtc0 = "/soc/i2c@01c2b000/ds1307@68";
+		};
+	};
+
+	fragment@1 {
+		target = <&i2c1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			ds1307@68 {
+				compatible = "dallas,ds1307";
+				reg = <0x68>;
+				status = "okay";
+			};
+		};
+	};
+};

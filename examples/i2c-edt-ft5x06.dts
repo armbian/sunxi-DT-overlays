@@ -2,23 +2,22 @@
 /plugin/;
 
 / {
-	compatible = "allwinner,sun7i-a20";
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
 
 	fragment@0 {
+		/* Set to I2C controller number touchscreen is connected to */
 		target = <&i2c3>;
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
-			status = "okay";
-			pinctrl-names = "default";
-			pinctrl-0 = <&i2c3_pins_a>;
 			edt-ft5x06@38 {
-				compatible = "edt,edt-ft5406", "edt,edt-ft5x06";
+				compatible = "edt,edt-ft5406";
 				status = "okay";
 				reg = <0x38>;
 				interrupt-parent = <&pio>;
 				interrupts = <7 9 2>; /* PH9 IRQ_TYPE_EDGE_FALLING */
-				wake-gpios = <7 7 1>; /* PH7 GPIO_ACTIVE_LOW */
+				reset-gpios = <&pio 7 6 1>; /* PH6 GPIO_ACTIVE_LOW */
+				wake-gpios = <&pio 7 7 1>; /* PH7 GPIO_ACTIVE_LOW */
 				touchscreen-size-x = <1024>;
 				touchscreen-size-y = <600>;
 				touchscreen-inverted-x;

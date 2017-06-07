@@ -38,6 +38,4 @@ cs-gpios = <0>, <&pio 0 1 0>, <&pio 7 7 0>; /* Native, PA1, PH7 */
 
 - U-boot does not support overlay parameters, so changing values is implemented via executing a "fixup" script after all overlays were applied. This script uses environment variables loaded from `/boot/armbianEnv.txt` to change the live tree using `fdt` command.
 
-- Since SoCs have multiple controllers of the same type (I2C, SPI) that can be exposed in different combinations on different boards, adding slave I2C and SPI devices is solved by adding a slave node with `status = "disabled";` to each controller and then enabling one of the nodes (with respective controller) in the fixup script based on provided bus number for the specified device type.
-
-- Since some slave devices require additional resources (oscillators, interrupt pins), for the simplicity and consistence only one slave device of each type can be activated by the provided overlays.
+- Since SoCs have multiple controllers of the same type (I2C, SPI) that can be exposed in different combinations on different boards, slave devices (I2C, I2S, SPI, ...) are provided not as ready to use overlays but as examples that require minimal editing to match the used configuration.

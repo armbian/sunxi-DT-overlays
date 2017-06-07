@@ -1,10 +1,8 @@
 /dts-v1/;
 /plugin/;
 
-#include <dt-bindings/interrupt-controller/irq.h>
-
 / {
-	compatible = "allwinner,sun8i-h3";
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
 
 	fragment@0 {
 		target-path = "/clocks";
@@ -43,7 +41,7 @@
 				pinctrl-0 = <&can0_pin_irq>;
 				spi-max-frequency = <10000000>;
 				interrupt-parent = <&pio>;
-				interrupts = <0 7 IRQ_TYPE_EDGE_FALLING>; /* PA7 */
+				interrupts = <0 7 2>; /* PA7 IRQ_TYPE_EDGE_FALLING */
 				clocks = <&can0_osc_fixed>;
 				status = "okay";
 			};

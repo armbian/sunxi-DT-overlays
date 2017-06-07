@@ -2,7 +2,7 @@
 /plugin/;
 
 / {
-	compatible = "allwinner,sun8i-h3";
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
 
 	fragment@0 {
 		target-path = "/";

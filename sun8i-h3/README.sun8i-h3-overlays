@@ -30,6 +30,7 @@ adding fixed software (GPIO) chip selects is possible with a separate overlay
 - uart2
 - uart3
 - usbhost0
+- usbhost1
 - usbhost2
 - usbhost3
 - w1-gpio
@@ -214,6 +215,10 @@ param_uart3_rtscts (bool)
 ### usbhost0
 
 Activates USB host controller 0
+
+### usbhost1
+
+Activates USB host controller 1
 
 ### usbhost2
 

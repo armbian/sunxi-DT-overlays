@@ -1,0 +1,38 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
+
+	/* This fragment is required only if the IRQ pin requires internal pull-up */
+	fragment@0 {
+		target = <&pio>;
+		__overlay__ {
+			enc28j60_pins: enc28j60_pins {
+				pins = "PA7";
+				function = "irq";
+				bias-pull-up;
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+			enc28j60 {
+	                        compatible = "microchip,enc28j60";
+	                        reg = <0>;
+	                        interrupt-parent = <&pio>;
+	                        interrupts = <0 7 2>; /* PA7 IRQ_TYPE_EDGE_FALLING */
+	                        spi-max-frequency = <12000000>;
+	                        status = "okay";
+	                        /* These are required only if internal pull-up is used for the IRQ pin */
+				pinctrl-names = "default";
+	                        pinctrl-0 = <&enc28j60_pins>;
+			};
+		};
+	};
+};

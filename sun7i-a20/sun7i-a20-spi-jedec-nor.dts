@@ -16,9 +16,6 @@
 	fragment@1 {
 		target = <&spi0>;
 		__overlay__ {
-			pinctrl-names = "default", "default";
-			pinctrl-0 = <&spi0_pins_a>;
-			pinctrl-1 = <&spi0_cs0_pins_a>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 			spiflash {
@@ -33,8 +30,6 @@
 	fragment@2 {
 		target = <&spi1>;
 		__overlay__ {
-			pinctrl-names = "default";
-			pinctrl-0 = <&spi1_pins_a>, <&spi1_cs0_pins_a>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 			spiflash {
@@ -49,9 +44,6 @@
 	fragment@3 {
 		target = <&spi2>;
 		__overlay__ {
-			pinctrl-names = "default", "default";
-			pinctrl-0 = <&spi2_pins_a>;
-			pinctrl-1 = <&spi2_cs0_pins_a>;
 			#address-cells = <1>;
 			#size-cells = <0>;
 			spiflash {

@@ -26,6 +26,9 @@ I2C bus 0 is used for the AXP209 PMIC
 - pps-gpio
 - pwm
 - spdif-out
+- spi0
+- spi1
+- spi2
 - spi-jedec-nor
 - spi-spidev
 - uart1
@@ -110,6 +113,35 @@ Activates SPDIF/Toslink audio output
 
 SPDIF pin: PB13
 
+### spi0
+
+Activates SPI controller 0 to use it with other overlays and sets up the pin multiplexing for it
+
+SPI 0 pins (MOSI, MISO, SCK, CS0, CS1): PI12, PI13, PI11, PI10, PI14
+
+### spi1
+
+Activates SPI controller 1 to use it with other overlays and sets up the pin multiplexing for it
+
+SPI 1 pins (MOSI, MISO, SCK, CS0): PI18, PI19, PI17, PI16
+
+### spi2
+
+Activates SPI controller 2 to use it with other overlays and sets up the pin multiplexing for it
+
+SPI 2 pins a (MOSI, MISO, SCK, CS0): PC21, PC22, PC20, PC19
+SPI 2 pins b (MOSI, MISO, SCK, CS0): PB16, PB17, PB15, PB14
+
+Parameters:
+
+param_spi2_bus_pins (char)
+	SPI bus 2 pinmux variant
+	Optional
+	Default: a
+	Supported values: a, b
+	Determines what pins SPI bus 2 is exposed on if SPI 2 is used
+
+
 ### spi-jedec-nor
 
 Activates MTD support for JEDEC compatible SPI NOR flash chips on SPI bus
@@ -126,13 +158,6 @@ param_spinor_spi_bus (int)
 	SPI bus to activate SPI NOR flash support on
 	Required
 	Supported values: 0, 1, 2
-
-param_spi2_bus_pins (char)
-	SPI bus 2 pinmux variant
-	Optional
-	Default: a
-	Supported values: a, b
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
 
 param_spinor_max_freq (int)
 	Maximum SPI frequency
@@ -156,13 +181,6 @@ param_spidev_spi_bus (int)
 	SPI bus to activate mcp2515 support on
 	Required
 	Supported values: 0, 1, 2
-
-param_spi2_bus_pins (char)
-	SPI bus 2 pinmux variant
-	Optional
-	Default: a
-	Supported values: a, b
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
 
 param_spidev_max_freq (int)
 	Maximum SPIdev frequency

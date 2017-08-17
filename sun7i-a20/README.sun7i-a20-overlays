@@ -29,6 +29,9 @@ I2C bus 0 is used for the AXP209 PMIC
 - pps-gpio
 - pwm
 - spdif-out
+- spi0
+- spi1
+- spi2
 - spi-add-cs1
 - spi-jedec-nor
 - spi-spidev
@@ -146,6 +149,34 @@ Activates SPDIF/Toslink audio output
 
 SPDIF pin: PB13
 
+### spi0
+
+Activates SPI controller 0 to use it with other overlays and sets up the pin multiplexing for it
+
+SPI 0 pins (MOSI, MISO, SCK, CS0, CS1): PI12, PI13, PI11, PI10, PI14
+
+### spi1
+
+Activates SPI controller 1 to use it with other overlays and sets up the pin multiplexing for it
+
+SPI 1 pins (MOSI, MISO, SCK, CS0): PI18, PI19, PI17, PI16
+
+### spi2
+
+Activates SPI controller 2 to use it with other overlays and sets up the pin multiplexing for it
+
+SPI 2 pins a (MOSI, MISO, SCK, CS0): PC21, PC22, PC20, PC19
+SPI 2 pins b (MOSI, MISO, SCK, CS0): PB16, PB17, PB15, PB14
+
+Parameters:
+
+param_spi2_bus_pins (char)
+	SPI bus 2 pinmux variant
+	Optional
+	Default: a
+	Supported values: a, b
+	Determines what pins SPI bus 2 is exposed on if SPI 2 is used
+
 ### spi-add-cs1
 
 Activates SPI chip select 1 on SPI controller 0
@@ -177,13 +208,6 @@ param_spinor_spi_cs (int)
 	Supported values: 0, 1
 	Using chip select 1 on SPI 0 requires using "spi-add-cs1" overlay
 
-param_spi2_bus_pins (char)
-	SPI bus 2 pinmux variant
-	Optional
-	Default: a
-	Supported values: a, b
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
-
 param_spinor_max_freq (int)
 	Maximum SPI frequency
 	Optional
@@ -213,13 +237,6 @@ param_spidev_spi_cs (int)
 	Default: 0
 	Supported values: 0, 1
 	Using chip select 1 on SPI 0 requires using "spi-add-cs1" overlay
-
-param_spi2_bus_pins (char)
-	SPI bus 2 pinmux variant
-	Optional
-	Default: a
-	Supported values: a, b
-	Determines what pins SPI bus 2 is exposed on if SPI 2 is used by any overlay
 
 param_spidev_max_freq (int)
 	Maximum SPIdev frequency

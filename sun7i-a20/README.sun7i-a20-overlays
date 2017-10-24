@@ -262,9 +262,16 @@ param_uart2_rtscts (bool)
 
 Activates serial port 3 (/dev/ttyS3)
 
-UART 3 pins (TX, RX, RTS, CTS): PG6, PG7, PG8, PG9
+UART 3 pins a (TX, RX, RTS, CTS): PG6, PG7, PG8, PG9
+UART 3 pins b (TX, RX, RTS, CTS): PH0, PH1, PH2, PH3
 
 Parameters:
+
+param_uart3_pins (char)
+	Determines what pins UART 3 is exposed on
+	Optional
+	Default: a
+	Supported values: a, b
 
 param_uart3_rtscts (bool)
 	Enable RTS and CTS pins

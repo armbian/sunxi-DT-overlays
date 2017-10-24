@@ -17,4 +17,11 @@
 			status = "okay";
 		};
 	};
+
+	fragment@2 {
+		target = <&usbphy>;
+		__overlay__ {
+			status = "okay";
+		};
+	};
 };

@@ -19,6 +19,7 @@
 		__overlay__ {
 			#address-cells = <1>;
 			#size-cells = <0>;
+			status = "okay";
 			ads7846@0 {
 				compatible = "ti,ads7846";
 				reg = <0>; /* Chip Select 0 */

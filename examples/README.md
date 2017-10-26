@@ -61,7 +61,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 #### spi-ads7846.dts
 - overlay for an ADS7846 touch screen connected to the SPI0 controller on H3 based board
 - bindings documentation: [ads7846.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/input/touchscreen/ads7846.txt)
-- requires activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
+- may require activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
 - may require changing the `compatible` property value even though currently it's not required
 - may require adding wake GPIO
 - may require changing the interrupt GPIO specifier
@@ -70,7 +70,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 ### spi-enc28j60
 - overlays for a ENC28J60 Ethernet controller connected to the SPI bus
 - bindings documentation: [microchip,enc28j60.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/net/microchip,enc28j60.txt)
-- requires activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
+- may require activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
 - may require changing the interrupt GPIO specifier
 - using external pull-up resistor on the interrupt line is highly recommended if the module doesn't have one
 
@@ -78,7 +78,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 ### spi-mcp251x
 - overlays for a MCP251x CAN controller connected to the SPI bus
 - bindings documentation: [microchip,mcp251x.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/net/can/microchip,mcp251x.txt)
-- requires activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
+- may require activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
 - may require changing the `compatible` property value
 - may require changing the interrupt GPIO specifier
 - may require changing the clock frequency to an actual value of the onboard resonator

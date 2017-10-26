@@ -1,0 +1,20 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
+
+	fragment@0 {
+		target = <&i2c1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+			ina219@40 {
+				compatible = "ti,ina219";
+				reg = <0x40>;
+				status = "okay";
+				shunt-resistor = <100000>;
+			};
+		};
+	};
+};

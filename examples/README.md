@@ -35,6 +35,15 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 - may require changing the interrupt GPIO specifier
 
 
+#### i2c-ina219.dts
+- overlay for a INA219 current shunt and power monitor connected to the I2C bus
+- bindings documentation: [ina2xx.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/hwmon/ina2xx.txt)
+- requires activating the I2C bus the device is connected to by a kernel provided overlay (i.e. `overlays=i2c1`)
+- may require changing the `compatible` property value
+- may require changing the `reg` property value to the actual address of the chip
+- may require changing the `shunt-resistor` depending on board resistor
+
+
 #### i2c-pca857x.dts
 - overlay for a PCA8574 GPIO/interrupt controller connected to the I2C bus
 - bindings documentation: [gpio-pcf857x.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/gpio/gpio-pcf857x.txt)
@@ -42,14 +51,6 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 - may require changing the `compatible` property value
 - may require changing the `reg` property value to the actual address of the chip
 - may require changing the interrupt GPIO specifier
-
-
-#### i2c-ina219.dts
-- overlay for a INA219 current shunt and power monitor connected to the I2C bus
-- bindings documentation: [ina2xx.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/hwmon/ina2xx.txt)
-- requires activating the I2C bus the device is connected to by a kernel provided overlay (i.e. `overlays=i2c-ina219`)
-- may require changing the `reg` property value to the actual address of the chip
-- may require changing the `shunt-resistor` depending on board resistor
 
 
 #### sht1x.dts

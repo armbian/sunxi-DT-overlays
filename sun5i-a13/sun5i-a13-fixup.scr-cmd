@@ -26,6 +26,12 @@ if test -n "${param_spidev_spi_bus}"; then
 	env delete tmp_spi_path
 fi
 
+if test "${param_uart1_pins}" = "b"; then
+	fdt get value tmp_phandle /soc@01c00000/pinctrl@01c28400/uart1@1 phandle
+	fdt set /soc@01c00000/serial@01c28400 pinctrl-0 "<${tmp_phandle}>"
+	env delete tmp_phandle
+fi
+
 if test "${param_uart2_rtscts}" = "1"; then
 	fdt get value tmp_phandle1 /soc@01c00000/pinctrl@01c20800/uart2@0 phandle
 	fdt get value tmp_phandle2 /soc@01c00000/pinctrl@01c20800/uart2-cts-rts@0 phandle

@@ -112,13 +112,28 @@ if test "${param_uart2_rtscts}" = "1"; then
 	env delete tmp_phandle
 fi
 
-if test "${param_uart3_rtscts}" = "1"; then
-	fdt get value tmp_phandle1 /soc@01c00000/pinctrl@01c20800/uart3 phandle
-	fdt get value tmp_phandle2 /soc@01c00000/pinctrl@01c20800/uart3_rts_cts phandle
-	fdt set /soc@01c00000/serial@01c28c00 pinctrl-names "default" "default"
-	fdt set /soc@01c00000/serial@01c28c00 pinctrl-0 "<${tmp_phandle1}>"
-	fdt set /soc@01c00000/serial@01c28c00 pinctrl-1 "<${tmp_phandle2}>"
-	env delete tmp_phandle1 tmp_phandle2
+if test "${param_uart3_pins}" = "b"; then
+	if test "${param_uart3_rtscts}" = "1"; then
+		fdt get value tmp_phandle1 /soc@01c00000/pinctrl@01c20800/uart3_pins_b phandle
+		fdt get value tmp_phandle2 /soc@01c00000/pinctrl@01c20800/uart3_pins_b_rts_cts phandle
+		fdt set /soc@01c00000/serial@01c28c00 pinctrl-names "default" "default"
+		fdt set /soc@01c00000/serial@01c28c00 pinctrl-0 "<${tmp_phandle1}>"
+		fdt set /soc@01c00000/serial@01c28c00 pinctrl-1 "<${tmp_phandle2}>"
+		env delete tmp_phandle1 tmp_phandle2
+	else
+		fdt get value tmp_phandle /soc@01c00000/pinctrl@01c20800/uart3_pins_b phandle
+		fdt set /soc@01c00000/serial@01c28c00 pinctrl-0 "<${tmp_phandle}>"
+		env delete tmp_phandle
+	fi
+else
+	if test "${param_uart3_rtscts}" = "1"; then
+		fdt get value tmp_phandle1 /soc@01c00000/pinctrl@01c20800/uart3_pins_a_2 phandle
+		fdt get value tmp_phandle2 /soc@01c00000/pinctrl@01c20800/uart3_pins_a_rts_cts phandle
+		fdt set /soc@01c00000/serial@01c28c00 pinctrl-names "default" "default"
+		fdt set /soc@01c00000/serial@01c28c00 pinctrl-0 "<${tmp_phandle1}>"
+		fdt set /soc@01c00000/serial@01c28c00 pinctrl-1 "<${tmp_phandle2}>"
+		env delete tmp_phandle1 tmp_phandle2
+	fi
 fi
 
 if test "${param_uart4_pins}" = "b"; then

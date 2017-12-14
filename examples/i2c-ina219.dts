@@ -5,15 +5,16 @@
 	compatible = "allwinner,sun4i-a10", "allwinner,sun7i-a20", "allwinner,sun8i-h3", "allwinner,sun50i-a64", "allwinner,sun50i-h5";
 
 	fragment@0 {
-		target-path = "/";
+		target = <&i2c1>;
 		__overlay__ {
-			sht1x {
-				compatible = "sensirion,sht15";
-				clk-gpios = <&pio 0 7 0>; /* PA7 */
-				data-gpios = <&pio 0 8 0>; /* PA8 */
-				vcc-supply = <&reg_vcc3v3>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			ina219@40 {
+				compatible = "ti,ina219";
+				reg = <0x40>;
+				status = "okay";
+				shunt-resistor = <100000>;
 			};
 		};
-
 	};
 };

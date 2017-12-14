@@ -7,7 +7,7 @@
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {
-			spi1 = "/soc/spi@01c06000";
+			spi1 = "/soc@01c00000/spi@01c06000";
 		};
 	};
 

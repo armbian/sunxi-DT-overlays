@@ -24,6 +24,8 @@ I2C bus 0 is used for the AXP209 PMIC
 - i2c2
 - i2c3
 - i2c4
+- i2s0
+- i2s1
 - mmc2
 - nand
 - pps-gpio
@@ -80,6 +82,18 @@ I2C3 pins (SCL, SDA): PI0, PI1
 Activates TWI/I2C bus 4
 
 I2C4 pins (SCL, SDA): PI2, PI3
+
+### i2s0
+
+Activates SoC I2S controller 0
+
+I2S0 pins (MCLK, BCLK, LRCK, DO0, DO1, DO2, DO3, DI): PB5, PB6, PB7, PB8, PB9, PB10, PB11, PB12
+
+### i2s1
+
+Activates SoC I2S controller 1
+
+I2S1 pins (MCLK, BCLK, LRCK, DO, DI): PA9, PA14, PA15, PA16, PA17
 
 ### mmc2
 
@@ -262,9 +276,16 @@ param_uart2_rtscts (bool)
 
 Activates serial port 3 (/dev/ttyS3)
 
-UART 3 pins (TX, RX, RTS, CTS): PG6, PG7, PG8, PG9
+UART 3 pins a (TX, RX, RTS, CTS): PG6, PG7, PG8, PG9
+UART 3 pins b (TX, RX, RTS, CTS): PH0, PH1, PH2, PH3
 
 Parameters:
+
+param_uart3_pins (char)
+	Determines what pins UART 3 is exposed on
+	Optional
+	Default: a
+	Supported values: a, b
 
 param_uart3_rtscts (bool)
 	Enable RTS and CTS pins

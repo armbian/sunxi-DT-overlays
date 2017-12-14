@@ -12,16 +12,6 @@
 	};
 
 	fragment@1 {
-		target = <&spi0>;
-		__overlay__ {
-			status = "okay";
-			pinctrl-names = "default", "default";
-			pinctrl-0 = <&spi0_pins_a>;
-			pinctrl-1 = <&spi0_cs0_pins_a>;
-		};
-	};
-
-	fragment@2 {
 		target = <&pio>;
 		__overlay__ {
 			spi0_pins_a: spi0@0 {
@@ -34,5 +24,15 @@
 				function = "spi0";
 			};
 		};
-	}
+	};
+
+	fragment@2 {
+		target = <&spi0>;
+		__overlay__ {
+				status = "okay";
+				pinctrl-names = "default", "default";
+				pinctrl-0 = <&spi0_pins_a>;
+				pinctrl-1 = <&spi0_cs0_pins_a>;
+		};
+	};
 };

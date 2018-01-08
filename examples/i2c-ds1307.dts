@@ -8,7 +8,9 @@
 	 * Aliases can be used to set the external RTC as rtc0
 	 * Needs supplying the correct path to the I2C controller RTC is connected to,
 	 * this example is for I2C1 on H3
-	 * /
+	 * NOTE: setting time at boot by the kernel
+	 * may not work in some cases if the external RTC module is loaded too late
+	 */
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {

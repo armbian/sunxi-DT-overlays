@@ -7,7 +7,7 @@
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {
-			spi0 = "/soc@01c00000/spi@01c05000";
+			spi0 = "/soc/spi@1c05000";
 		};
 	};
 
@@ -16,8 +16,8 @@
 		__overlay__ {
 			status = "okay";
 			pinctrl-names = "default", "default";
-			pinctrl-0 = <&spi0_pins_a>;
-			pinctrl-1 = <&spi0_cs0_pins_a>;
+			pinctrl-0 = <&spi0_pi_pins>;
+			pinctrl-1 = <&spi0_cs0_pi_pin>;
 		};
 	};
 };

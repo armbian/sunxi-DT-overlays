@@ -7,19 +7,19 @@
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {
-			serial2 = "/soc@01c00000/serial@01c28800";
+			serial2 = "/soc/serial@1c28800";
 		};
 	};
 
 	fragment@1 {
 		target = <&pio>;
 		__overlay__ {
-			uart2_pins_a: uart2@0 {
+			uart2_rts_cts_pins: uart2-rts-cts-pins {
 				pins = "PI16", "PI17", "PI18", "PI19";
 				function = "uart2";
 			};
 
-			uart2_pins_a_2: uart2@1 {
+			uart2_pins: uart2-pins {
 				pins = "PI18", "PI19";
 				function = "uart2";
 			};
@@ -30,7 +30,7 @@
 		target = <&uart2>;
 		 __overlay__ {
 			pinctrl-names = "default";
-			pinctrl-0 = <&uart2_pins_a_2>;
+			pinctrl-0 = <&uart2_pins>;
 			status = "okay";
 		};
 	};

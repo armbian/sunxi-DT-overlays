@@ -4,6 +4,11 @@
 
 ### :speech_balloon: [Forum thread for issues and suggestions](https://forum.armbian.com/index.php?/topic/3787-testers-wanted-sunxi-device-tree-overlays/)
 
+## Version
+
+As of now overlays in this repository should work with the kernel version **4.14.x**.
+They may need changes/adjustments to work on older versions and eventually they will be updated to newer kernel versions.
+
 ## Technical info
 
 ##### Requirements

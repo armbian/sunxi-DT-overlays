@@ -4,9 +4,15 @@ These are some example overlays for the niche devices (i.e. IIO sensors), custom
 
 Compared to the other ones in this repository these are "standalone" - no fixup script is required, so they can be used with the configfs interface too.
 
-#### double-spidev.dts
+
+#### double-spidev-bus.dts
+- overlay for 2 SPIdev devices on 2 different SPI controllers
+- may require activating the SPI buses by a kernel provided overlay (i.e. `overlays=spi0 spi1`) to set pin muxing and bus aliases
+
+
+#### double-spidev-cs.dts
 - overlay for 2 SPIdev devices on 1 SPI bus
-- requires activating the SPI bus by a kernel provided overlay (i.e. `overlays=spi0`)
+- may require activating the SPI bus by a kernel provided overlay (i.e. `overlays=spi0`) to set pin muxing and bus aliases
 - requires using SPI bus that supports multiple chip selects (including software/GPIO based ones)
 - requires `spi-add-cs1` overlay on H3 and H5
 
@@ -21,7 +27,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 #### i2c-apds9960.dts
 - overlay for an apds9960 sensor connected to the I2C bus
 - bindings documentation: [apds9960.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/iio/light/apds9960.txt)
-- requires activating the I2C bus the device is connected to by a kernel provided overlay (i.e. `overlays=i2c1`)
+- may require activating the I2C bus by a kernel provided overlay (i.e. `overlays=i2c1`) to set pin muxing
 - may require changing the interrupt GPIO specifier
 - using external pull-up resistor on the interrupt line is highly recommended if the module doesn't have one
 
@@ -29,7 +35,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 #### i2c-edt-ft5x06.dts
 - overlay for a touch screen connected to the I2C bus
 - bindings documentation: [edt-ft5x06.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.txt)
-- requires activating the I2C bus the device is connected to by a kernel provided overlay (i.e. `overlays=i2c1`)
+- may require activating the I2C bus by a kernel provided overlay (i.e. `overlays=i2c1`) to set pin muxing
 - may require changing the `compatible` property value even though currently it's not required
 - may require changing or removing wake and reset GPIOs
 - may require changing the interrupt GPIO specifier
@@ -38,7 +44,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 #### i2c-ina219.dts
 - overlay for a INA219 current shunt and power monitor connected to the I2C bus
 - bindings documentation: [ina2xx.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/hwmon/ina2xx.txt)
-- requires activating the I2C bus the device is connected to by a kernel provided overlay (i.e. `overlays=i2c1`)
+- may require activating the I2C bus by a kernel provided overlay (i.e. `overlays=i2c1`) to set pin muxing
 - may require changing the `compatible` property value
 - may require changing the `reg` property value to the actual address of the chip
 - may require changing the `shunt-resistor` depending on board resistor
@@ -47,7 +53,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 #### i2c-pca857x.dts
 - overlay for a PCA8574 GPIO/interrupt controller connected to the I2C bus
 - bindings documentation: [gpio-pcf857x.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/gpio/gpio-pcf857x.txt)
-- requires activating the I2C bus the device is connected to by a kernel provided overlay (i.e. `overlays=i2c0`)
+- may require activating the I2C bus by a kernel provided overlay (i.e. `overlays=i2c0`) to set pin muxing
 - may require changing the `compatible` property value
 - may require changing the `reg` property value to the actual address of the chip
 - may require changing the interrupt GPIO specifier
@@ -61,7 +67,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 #### spi-ads7846.dts
 - overlay for an ADS7846 touch screen connected to the SPI0 controller on H3 based board
 - bindings documentation: [ads7846.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/input/touchscreen/ads7846.txt)
-- may require activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
+- may require activating the SPI bus by a kernel provided overlay (i.e. `overlays=spi0`) to set pin muxing
 - may require changing the `compatible` property value even though currently it's not required
 - may require adding wake GPIO
 - may require changing the interrupt GPIO specifier
@@ -70,7 +76,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 ### spi-enc28j60
 - overlays for a ENC28J60 Ethernet controller connected to the SPI bus
 - bindings documentation: [microchip,enc28j60.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/net/microchip,enc28j60.txt)
-- may require activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
+- may require activating the SPI bus by a kernel provided overlay (i.e. `overlays=spi0`) to set pin muxing
 - may require changing the interrupt GPIO specifier
 - using external pull-up resistor on the interrupt line is highly recommended if the module doesn't have one
 
@@ -78,7 +84,7 @@ Compared to the other ones in this repository these are "standalone" - no fixup 
 ### spi-mcp251x
 - overlays for a MCP251x CAN controller connected to the SPI bus
 - bindings documentation: [microchip,mcp251x.txt](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/Documentation/devicetree/bindings/net/can/microchip,mcp251x.txt)
-- may require activating the SPI bus device is connected to by a kernel provided overlays (i.e. `overlays=spi0`)
+- may require activating the SPI bus by a kernel provided overlay (i.e. `overlays=spi0`) to set pin muxing
 - may require changing the `compatible` property value
 - may require changing the interrupt GPIO specifier
 - may require changing the clock frequency to an actual value of the onboard resonator

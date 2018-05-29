@@ -7,7 +7,7 @@
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {
-			serial3 = "/soc/serial@01c28c00";
+			serial3 = "/soc/serial@1c28c00";
 		};
 	};
 

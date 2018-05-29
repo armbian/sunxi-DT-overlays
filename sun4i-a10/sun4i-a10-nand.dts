@@ -7,7 +7,7 @@
 	fragment@0 {
 		target = <&pio>;
 		__overlay__ {
-			nand_pins_a: nand_pins@0 {
+			nand0_pins: nand0-pins {
 				pins = "PC0", "PC1", "PC2",
 						"PC5", "PC8", "PC9", "PC10",
 						"PC11", "PC12", "PC13", "PC14",
@@ -15,32 +15,32 @@
 				function = "nand0";
 			};
 
-			nand_cs0_pins_a: nand_cs@0 {
+			nand0_cs0_pin: nand0-cs0-pin {
 				pins = "PC4";
 				function = "nand0";
 			};
 
-			nand_cs1_pins_a: nand_cs@1 {
+			nand0_cs1_pin: nand0-cs1-pin {
 				pins = "PC3";
 				function = "nand0";
 			};
 
-			nand_cs2_pins_a: nand_cs@2 {
+			nand0_cs2_pin: nand0-cs2-pin {
 				pins = "PC17";
 				function = "nand0";
 			};
 
-			nand_cs3_pins_a: nand_cs@3 {
+			nand0_cs3_pin: nand0-cs3-pin {
 				pins = "PC18";
 				function = "nand0";
 			};
 
-			nand_rb0_pins_a: nand_rb@0 {
+			nand0_rb0_pin: nand0-rb0-pin {
 				pins = "PC6";
 				function = "nand0";
 			};
 
-			nand_rb1_pins_a: nand_rb@1 {
+			nand0_rb1_pin: nand0-rb1-pin {
 				pins = "PC7";
 				function = "nand0";
 			};
@@ -53,7 +53,7 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 			pinctrl-names = "default";
-			pinctrl-0 = <&nand_pins_a>, <&nand_cs0_pins_a>, <&nand_rb0_pins_a>;
+			pinctrl-0 = <&nand0_pins>, <&nand0_cs0_pin>, <&nand0_rb0_pins>;
 			status = "okay";
 
 			nand@0 {

@@ -7,7 +7,7 @@
 	fragment@0 {
 		target = <&pio>;
 		__overlay__ {
-			pps_pins: pps_pins {
+			pps_pins: pps-pins {
 				pins = "PI15";
 				function = "gpio_in";
 			};
@@ -17,7 +17,7 @@
 	fragment@1 {
 		target-path = "/";
 		__overlay__ {
-			pps@0 {
+			pps0 {
 				compatible = "pps-gpio";
 				pinctrl-names = "default";
 				pinctrl-0 = <&pps_pins>;

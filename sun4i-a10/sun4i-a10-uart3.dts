@@ -7,29 +7,29 @@
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {
-			serial3 = "/soc@01c00000/serial@01c28c00";
+			serial3 = "/soc/serial@1c28c00";
 		};
 	};
 
 	fragment@1 {
 		target = <&pio>;
 		__overlay__ {
-			uart3_pins_a: uart3@0 {
+			uart3_pins_a: uart3-a {
 				pins = "PG6", "PG7";
 				function = "uart3";
 			};
 
-			uart3_pins_a_rts_cts: uart3@1 {
+			uart3_pins_a_rts_cts: uart3-a-2 {
 				pins = "PG8", "PG9";
 				function = "uart3";
 			};
 
-			uart3_pins_b: uart3@2 {
+			uart3_pins_b: uart3-b {
 				pins = "PH0", "PH1";
 				function = "uart3";
 			};
 
-			uart3_pins_b_rts_cts: uart3@3 {
+			uart3_pins_b_rts_cts: uart3-b-2 {
 				pins = "PH2", "PH3";
 				function = "uart3";
 			};

@@ -22,6 +22,7 @@ I2C bus 0 is used for the AXP209 PMIC
 - can
 - i2c1
 - i2c2
+- i2s
 - nand
 - pps-gpio
 - pwm
@@ -64,6 +65,12 @@ I2C1 pins (SCL, SDA): PB18, PB19
 Activates TWI/I2C bus 2
 
 I2C2 pins (SCL, SDA): PB20, PB21
+
+### i2s
+
+Activates SoC I2S controller
+
+I2S pins (MCLK, BCLK, LRCK, DO0, DO1, DO2, DO3, DI): PB5, PB6, PB7, PB8, PB9, PB10, PB11, PB12
 
 ### nand
 

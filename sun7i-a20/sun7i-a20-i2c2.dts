@@ -7,7 +7,7 @@
 	fragment@0 {
 		target-path = "/aliases";
 		__overlay__ {
-			i2c2 = "/soc@01c00000/i2c@01c2b400";
+			i2c2 = "/soc@1c00000/i2c@1c2b400";
 		};
 	};
 

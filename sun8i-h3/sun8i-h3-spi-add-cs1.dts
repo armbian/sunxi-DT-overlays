@@ -7,13 +7,13 @@
 	fragment@0 {
 		target = <&pio>;
 		__overlay__ {
-			spi0_cs1: spi0_cs1 {
+			spi0_cs1: spi0-cs1 {
 				pins = "PA21";
 				function = "gpio_out";
 				output-high;
 			};
 
-			spi1_cs1: spi1_cs1 {
+			spi1_cs1: spi1-cs1 {
 				pins = "PA10";
 				function = "gpio_out";
 				output-high;

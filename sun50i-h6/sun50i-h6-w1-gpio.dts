@@ -21,7 +21,7 @@
 				compatible = "w1-gpio";
 				pinctrl-names = "default";
 				pinctrl-0 = <&w1_pins>;
-				gpios = <&pio 3 9 0>; /* PC9 */
+				gpios = <&pio 2 9 0>; /* PC9 */
 				status = "okay";
 			};
 		};

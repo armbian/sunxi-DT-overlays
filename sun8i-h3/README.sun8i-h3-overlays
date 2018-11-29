@@ -17,6 +17,7 @@ adding fixed software (GPIO) chip selects is possible with a separate overlay
 
 - analog-codec
 - cir
+- gpio-poweroff
 - i2c0
 - i2c1
 - i2c2
@@ -67,6 +68,16 @@ Activates TWI/I2C bus 2
 I2C2 pins (SCL, SDA): PE12, PE13
 
 On most board this bus is wired to Camera (CSI) socket
+
+### gpio-poweroff
+
+Activates poweroff gpio driver, this driver toggles a pin when the system shuts down
+
+Parameters:
+
+param_pwr_off_pin (pin)
+	Pin which outputs poweroff signal when system halts
+	Default: PG11
 
 ### pps-gpio
 

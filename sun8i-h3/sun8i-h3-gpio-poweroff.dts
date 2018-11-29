@@ -1,0 +1,28 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "allwinner,sun8i-h3";
+
+	fragment@0 {
+		target = <&pio>;
+		__overlay__ {
+			pwr_off_pins: pwr_off_pins {
+				pins = "PG11";
+				function = "gpio_out";
+			};
+		};
+	};
+
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			gpio-poweroff {
+				compatible = "gpio-poweroff";
+				pinctrl-names = "default";
+				pinctrl-0 = <&pwr_off_pins>;
+				gpios = <&pio 6 11 0>;
+			};
+		};
+	};
+};

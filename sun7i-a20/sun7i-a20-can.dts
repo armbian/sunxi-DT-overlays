@@ -1,15 +1,20 @@
 /dts-v1/;
-/plugin/;
 
 / {
 	compatible = "allwinner,sun7i-a20";
 
 	fragment@0 {
-		target = <&can0>;
+		target = < 0xffffffff >;
+
 		__overlay__ {
 			pinctrl-names = "default";
-			pinctrl-0 = <&can0_pins_a>;
+			pinctrl-0 = < 0xffffffff >;
 			status = "okay";
 		};
+	};
+
+	__fixups__ {
+		can0 = "/fragment@0:target:0";
+		can_ph_pins = "/fragment@0/__overlay__:pinctrl-0:0";
 	};
 };

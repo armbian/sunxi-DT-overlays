@@ -243,6 +243,15 @@ param_uart4_pins (char)
 Activates serial port 5 (/dev/ttyS5)
 
 UART 5 pins (TX, RX): PH6, PH7
+UART 5 pins (TX, RX): PI10, PI11
+
+Parameters:
+
+param_uart5_pins (char)
+	Determines what pins UART 5 is exposed on
+	Optional
+	Default: a
+	Supported values: a, b
 
 ### uart 6
 

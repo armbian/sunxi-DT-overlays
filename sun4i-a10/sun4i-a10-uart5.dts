@@ -18,6 +18,11 @@
 				pins = "PH6", "PH7";
 				function = "uart5";
 			};
+
+			uart5_pins_b: uart5@1 {
+				pins = "PI10", "PI11";
+				function = "uart5";
+			};
 		};
 	};
 

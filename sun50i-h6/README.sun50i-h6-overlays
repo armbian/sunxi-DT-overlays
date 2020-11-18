@@ -1,0 +1,27 @@
+This document describes overlays provided in the kernel packages
+For generic Armbian overlays documentation please see
+https://docs.armbian.com/User-Guide_Allwinner_overlays/
+
+### Platform:
+
+sun50i-h6 (Allwinner H6)
+
+### Platform details:
+
+Please refer to h5 documentation for all missing.
+
+
+### Provided overlays:
+
+- pwm
+
+### Overlay details:
+
+### pwm
+
+Activates hardware PWM controller
+
+PWM pin: PD22
+
+Attention: On some board as "OrangePi Lite 2" there is an exposed pin marked as PWM1.
+           This is NOT the PWM1 pin. As datasheet the only PWM pin available is PD22 (ALT2).
